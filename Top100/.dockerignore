@@ -1,0 +1,17 @@
+[Bb]in/
+[Oo]bj/*
+TestResults/
+.nuget/
+_ReSharper.*/
+_ReSharper.*
+packages/
+artifacts/
+*.user
+*.suo
+*.cache
+.vs
+Dockerfile
+.gitignore
+.git
+.DS_Store
+.dockerignore
