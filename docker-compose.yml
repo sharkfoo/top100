@@ -13,7 +13,8 @@ services:
   top100import:
     image: kpearson/top100import:latest
     build:
-      context: Top100Import
+      context: .
+      dockerfile: Top100Import/Dockerfile
     depends_on:
       - mongo
     environment:
@@ -23,7 +24,8 @@ services:
   top100:
     image: kpearson/top100:latest
     build:
-      context: Top100
+      context: .
+      dockerfile: Top100/Dockerfile
       args:
         - port=5000
     depends_on:

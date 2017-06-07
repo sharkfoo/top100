@@ -7,6 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Top100Import", "Top100Impor
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{6BD695D5-FA66-4612-90A4-635A49677771}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
