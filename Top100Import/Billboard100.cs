@@ -5,6 +5,7 @@
 using System;
 using System.IO;
 using System.Text;
+using Top100Common;
 
 namespace Top100Import
 {
@@ -47,7 +48,7 @@ namespace Top100Import
             return song;
         }
 
-        public static void ImportCSV(ITop100DBClient client, string file)
+        public static void ImportCSV(IStore client, string file)
         {
             var fileStream = new FileStream(file, FileMode.Open);
             using (var csvFile = new StreamReader(fileStream, Encoding.GetEncoding("iso-8859-1")))
@@ -56,7 +57,7 @@ namespace Top100Import
                 while ((line = csvFile.ReadLine()) != null)
                 {
                     var ret = client.Insert(ParseCSVLine(line));
-                    if (ret.Result)
+                    if (ret.Result != null)
                     {
                         Console.WriteLine($"Added song: {line}");
                     }

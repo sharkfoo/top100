@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//
+// © Copyright 2017 Kevin Pearson
+//
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Top100Common;
 
 namespace Top100
 {
@@ -27,6 +28,12 @@ namespace Top100
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddSingleton(new ServiceOptions
+            {
+                MongoConnectionString = Configuration["MONGO_CONNECTION_STRING"]
+        });
+            services.AddSingleton<IStore, Store>();
+
             // Add framework services.
             services.AddMvc();
         }
@@ -56,5 +63,9 @@ namespace Top100
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
+    }
+    public class ServiceOptions
+    {
+        public string MongoConnectionString;
     }
 }

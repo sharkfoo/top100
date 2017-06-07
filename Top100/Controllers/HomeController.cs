@@ -1,7 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿//
+// © Copyright 2017 Kevin Pearson
+//
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Top100.Controllers

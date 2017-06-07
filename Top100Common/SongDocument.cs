@@ -4,7 +4,7 @@
 
 using MongoDB.Bson;
 
-namespace Top100Import
+namespace Top100Common
 {
     public class SongDocument
     {

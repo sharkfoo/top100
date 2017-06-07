@@ -2,7 +2,7 @@
 // © Copyright 2017 Kevin Pearson
 //
 
-namespace Top100Import
+namespace Top100Common
 {
     public class Song
     {

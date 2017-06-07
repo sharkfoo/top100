@@ -6,33 +6,34 @@ using System;
 using MongoDB.Driver;
 using System.Threading.Tasks;
 
-namespace Top100Import
+namespace Top100Common
 {
-    public class Top100DBClient : ITop100DBClient
+    public class Store : IStore
     {
         private IMongoDatabase db;
         private IMongoCollection<SongDocument> songCollection => db.GetCollection<SongDocument>("Top100");
 
-        public Top100DBClient(string connectionString)
+        public Store(string connectionString)
         {
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }
-        public async Task<bool> Insert(Song song)
+        public async Task<string> Insert(Song song)
         {
             try
             {
                 if (Find(song) == null)
                 {
-                    await songCollection.InsertOneAsync(new SongDocument(song));
-                    return true;
+                    var document = new SongDocument(song);
+                    await songCollection.InsertOneAsync(document);
+                    return document._id.ToString();
                 }
             }
             catch (MongoException e)
             {
                 Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
             }
-            return false;
+            return null;
         }
         public SongDocument Find(Song song)
         {
