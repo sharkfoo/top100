@@ -33,7 +33,7 @@ namespace Top100.Controllers
             });
 
             if (ret != null)
-                return Ok();
+                return Ok(new SongResult(ret));
 
             return BadRequest();
         }

@@ -31,8 +31,8 @@ namespace Top100
             services.AddSingleton(new ServiceOptions
             {
                 MongoConnectionString = Configuration["MONGO_CONNECTION_STRING"]
-        });
-            services.AddSingleton<IStore, Store>();
+            });
+            services.AddSingleton<IStore>(provider => new Store(Configuration["MONGO_CONNECTION_STRING"]));
 
             // Add framework services.
             services.AddMvc();
