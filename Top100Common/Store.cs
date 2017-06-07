@@ -5,6 +5,8 @@
 using System;
 using MongoDB.Driver;
 using System.Threading.Tasks;
+using MongoDB.Bson;
+using System.Collections.Generic;
 
 namespace Top100Common
 {
@@ -18,7 +20,7 @@ namespace Top100Common
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }
-        public async Task<string> Insert(Song song)
+        public async Task<string> InsertAsync(Song song)
         {
             try
             {
@@ -35,6 +37,77 @@ namespace Top100Common
             }
             return null;
         }
+
+        public async Task<Song> GetAsync(string id)
+        {
+            try
+            {
+                var filter = Builders<SongDocument>.Filter.Eq(x=>x._id, ObjectId.Parse(id));
+                var document = await songCollection.Find(filter).FirstOrDefaultAsync();
+                return document.Song;
+            }
+            catch (MongoException e)
+            {
+                Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+            }
+            return null;
+        }
+        public async Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
+        {
+            var builder = Builders<SongDocument>.Filter;
+            var filter = builder.Empty;
+            var retList = new List<Song>();
+
+            if (!String.IsNullOrWhiteSpace(titleFilterString))
+            {
+                var titleFilter = builder.Regex(x => x.Song.Title, new BsonRegularExpression(titleFilterString, "i"));
+                filter = builder.And(titleFilter, filter);
+            }
+            if (!String.IsNullOrWhiteSpace(artistFilterString))
+            {
+                var artistFilter = builder.Regex(x => x.Song.Artist, new BsonRegularExpression(artistFilterString, "i"));
+                filter = builder.And(artistFilter, filter);
+            }
+            if (!String.IsNullOrWhiteSpace(yearFilterString))
+            {
+                int year;
+                if (Int32.TryParse(yearFilterString, out year))
+                {
+                    var yearFilter = builder.Eq(x => x.Song.Year, year);
+                    filter = builder.And(yearFilter, filter);
+                }
+            }
+            if (!String.IsNullOrWhiteSpace(numberFilterString))
+            {
+                int number;
+                if (Int32.TryParse(numberFilterString, out number))
+                {
+                    var numberFilter = builder.Eq(x => x.Song.Number, number);
+                    filter = builder.And(numberFilter, filter);
+                }
+            }
+            if (!String.IsNullOrWhiteSpace(ownFilterString))
+            {
+                bool own = false;
+                if (Boolean.TryParse(ownFilterString, out own))
+                {
+                    var ownFilter = builder.Eq(x => x.Song.Own, own);
+                    filter = builder.And(ownFilter, filter);
+                }
+            }
+            try
+            {
+                await songCollection.Find(filter).SortBy(x=>x.Song.Year).ThenBy(x=>x.Song.Number).ForEachAsync(x => retList.Add(x.Song));
+                Console.WriteLine($"FindAsync found count={retList.Count} documents");
+            }
+            catch (MongoException ex)
+            {
+                Console.WriteLine($"FindAsync ex={ex}");
+            }
+
+            return retList;
+        }
+
         public SongDocument Find(Song song)
         {
             SongDocument result = null;
