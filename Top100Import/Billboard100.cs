@@ -51,15 +51,23 @@ namespace Top100Import
         public static void ImportCSV(IStore client, string file)
         {
             var fileStream = new FileStream(file, FileMode.Open);
-            using (var csvFile = new StreamReader(fileStream, Encoding.GetEncoding("iso-8859-1")))
+            using (var csvFile = new StreamReader(fileStream, Encoding.UTF8))
             {
                 string line = "";
                 while ((line = csvFile.ReadLine()) != null)
                 {
-                    var ret = client.InsertAsync(ParseCSVLine(line));
-                    if (ret.Result != null)
+                    try
                     {
-                        Console.WriteLine($"Added song: {line}");
+                        var ret = client.InsertAsync(ParseCSVLine(line));
+                        if (ret.Result != null)
+                        {
+                            Console.WriteLine($"Added song: {line}");
+                        }
+                    }
+                    catch(Exception e)
+                    {
+                        Console.WriteLine($"ERROR:  line={line}, ex={e}");
+                        break;
                     }
                 }
             }

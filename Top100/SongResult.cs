@@ -2,15 +2,17 @@
 // © Copyright 2017 Kevin Pearson
 //
 
+using Top100Common;
+
 namespace Top100
 {
     public class SongResult
     {
-        public SongResult(string id)
+        public SongResult(Song song)
         {
-            Id = id;
+            this.Song = song;
         }
 
-        public string Id { get; set; }
+        public Song Song { get; set; }
     }
 }

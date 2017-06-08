@@ -183,8 +183,8 @@ Don't Be Cruel,Elvis Presley,1956,2,1
 Lisbon Antigua,Nelson Riddle,1956,3,0
 My Prayer,Platters,1956,4,0
 The Wayward Wind,Gogi Grant,1956,5,0
-The Poor People Of Paris,Les Baxter,1956,7,0
-Whatever Will Be Will Be (Que Sera Sera),Doris Day,1956,8,0
+The Poor People Of Paris,Les Baxter,1956,6,0
+Whatever Will Be Will Be (Que Sera Sera),Doris Day,1956,7,0
 Hound Dog,Elvis Presley,1956,8,1
 Memories Are Made Of This,Dean Martin,1956,9,0
 Rock And Roll Waltz,Kay Starr,1956,10,0
@@ -761,7 +761,7 @@ Blame It On The Bossa Nova,Eydie Gorme,1963,30,0
 You Can't Sit Down,Flovells,1963,31,0
 Heat Wave,Martha & The Vandellas,1963,32,0
 Denise,Randy & The Rainbows,1963,33,0
-Walk Right In,Rooftop Singers,1963,33,0
+Walk Right In,Rooftop Singers,1963,34,0
 If You Wanna Be Happy,Jimmy Soul,1963,35,0
 Surfer Girl,The Beach Boys,1963,36,0
 If I Had A Hammer,Trini Lopez,1963,37,0
@@ -773,7 +773,7 @@ Our Day Will Come,Ruby & The Romantics,1963,42,0
 I Can't Stay Mad At You,Skeeter Davis,1963,43,0
 Hello\, Stranger,Barbara Lewis,1963,44,0
 Be My Baby,Ronettes,1963,45,0
-Mean Woman Blues,Roy Orbison,1963,45,0
+Mean Woman Blues,Roy Orbison,1963,46,0
 South Street,Orlons,1963,47,0
 Days Of Wine And Roses,Henry Mancini,1963,48,0
 The Monkey Time,Major Lance,1963,49,0
@@ -799,7 +799,7 @@ Then He Kissed,Crystals,1963,68,0
 (You're The) Devil In Disguise,Elvis Presley,1963,69,0
 Those Lazy-hazy-crazy Days On Summer,Nat King Cole,1963,70,0
 Baby Workout,Jackie Wilson,1963,71,0
-Pride And Joy,Marvin Gaye,1963,71,0
+Pride And Joy,Marvin Gaye,1963,72,0
 Walking The Dog,Rufus Thomas,1963,73,0
 From A Jack To A King,Ned Miller,1963,74,0
 Up On The Roof,Drifters,1963,75,0
@@ -1153,8 +1153,8 @@ Come On Down To My Boat,Every Mothers' Son,1967,22,0
 Incense And Peppermints,Strawberry Alarm Clock,1967,23,0
 Ruby Tuesday,The Rolling Stones,1967,24,0
 It Must Be Him,Vicki Carr,1967,25,0
+Gimme Little Sign,Brenton Wood,1967,26,0
 For What It's Worth,Buffalo Springfield,1967,27,1
-Gimme Little Sign,Brenton Wood,1967,28,0
 Love Is Here And Now You're Gone,Supremes,1967,28,0
 The Happening,Supremes,1967,29,0
 All You Need Is Love,The Beatles,1967,30,1
@@ -1428,8 +1428,6 @@ My Whole World Ended (The Moment You Left Me),David Ruffin,1969,97,0
 Soul Deep,Box Tops,1969,98,0
 Hooked On A Feeling,B.J. Thomas,1969,99,0
 Sweet Cream Ladies,Box Tops,1969,100,0
-Let Me,Paul Revere & The Raiders,1969,100,0
-You Showed Me,Turtles,1969,80,0
 Bridge over Troubled Water,Simon & Garfunkel,1970,1,1
 (They Long to Be) Close to You,The Carpenters,1970,2,1
 No Sugar Tonight / New Mother Nature,The Guess Who,1970,3,1
@@ -1654,8 +1652,8 @@ Outa-space,Billy Preston,1972,22,0
 Slippin' Into Darkness,War,1972,23,0
 Long Cool Woman (In A Black Dress),Hollies,1972,24,0
 How Do You Do,Mouth & MacNeal,1972,25,0
-Song Sung Blue,Neil Diamond,1972,27,1
-A Horse with No Name,America,1972,28,1
+Song Sung Blue,Neil Diamond,1972,26,1
+A Horse with No Name,America,1972,27,1
 Popcorn,Hot Butter,1972,28,0
 Everybody Plays The Fool,Main Ingredient,1972,29,0
 Precious And Few,Climax,1972,30,0
@@ -1695,26 +1693,26 @@ Black And White,Three Dog Night,1972,63,0
 Sylvia's Mother,Dr. Hook & The Medicine Show,1972,64,0
 Hurting Each Other,The Carpenters,1972,65,0
 Coconut,Nilsson,1972,66,0
-Puppy Love,Donny Osmond,1972,68,0
-You Don't Mess Around With Jim,Jim Croce,1972,69,0
-Hot Rod Lincoln,Commander Cody & His Lost Planet Airmen,1972,70,0
-A Cowboy's Work Is Never Done,Sonny & Cher,1972,71,0
-Joy,Apollo 100,1972,72,0
-Anticipation,Carly Simon,1972,73,0
-Never Been To Spain,Three Dog Night,1972,74,0
-Kiss An Angel Good Morning,Charlie Pride,1972,75,0
-School's Out,Alice Cooper,1972,76,1
-Saturday In the Park,Chicago,1972,77,1
-Drowning In The Sea Of Love,Joe Simon,1972,78,0
-Use Me,Bill Withers,1972,79,0
-Family Affair,Sly & The Family Stone,1972,80,0
-Troglodyte,Jimmy Castor Bunch,1972,81,0
-The Witch Queen Of New Orleans,Redbone,1972,82,0
-Freddie's Dead,Curtis Mayfield,1972,83,0
-Power Of Love,Joe Simon,1972,84,0
-Ain't Understanding Mellow,Jerry Butler & Brenda Lee Eager,1972,85,0
-Taxi,Harry Chapin,1972,86,0
-Don't Say You Don't Rememeer,Beverly Bremers,1972,87,0
+Puppy Love,Donny Osmond,1972,67,0
+You Don't Mess Around With Jim,Jim Croce,1972,68,0
+Hot Rod Lincoln,Commander Cody & His Lost Planet Airmen,1972,69,0
+A Cowboy's Work Is Never Done,Sonny & Cher,1972,70,0
+Joy,Apollo 100,1972,71,0
+Anticipation,Carly Simon,1972,72,0
+Never Been To Spain,Three Dog Night,1972,73,0
+Kiss An Angel Good Morning,Charlie Pride,1972,74,0
+School's Out,Alice Cooper,1972,75,1
+Saturday In the Park,Chicago,1972,76,1
+Drowning In The Sea Of Love,Joe Simon,1972,77,0
+Use Me,Bill Withers,1972,78,0
+Family Affair,Sly & The Family Stone,1972,79,0
+Troglodyte,Jimmy Castor Bunch,1972,80,0
+The Witch Queen Of New Orleans,Redbone,1972,81,0
+Freddie's Dead,Curtis Mayfield,1972,82,0
+Power Of Love,Joe Simon,1972,83,0
+Ain't Understanding Mellow,Jerry Butler & Brenda Lee Eager,1972,84,0
+Taxi,Harry Chapin,1972,85,0
+Don't Say You Don't Remember,Beverly Bremers,1972,86,0
 Sealed With A Kiss,Bobby Vinton,1972,87,0
 I Saw The Light,Todd Rundgren,1972,88,0
 Motorcycle Mama,Sailcat,1972,89,0
@@ -1914,13 +1912,13 @@ Hello\, It's Me,Todd Rundgren,1974,82,0
 I Love,Tom T. Hall,1974,83,0
 Clap For The Wolfman,The Guess Who,1974,84,0
 I'll Have To Say I Love You In A Song,Jim Croce,1974,85,0
-The Lord's Prayer,Sister Janet Mead,1974,85,0
+The Lord's Prayer,Sister Janet Mead,1974,86,0
 Trying To Hold On To My Woman,Lamont Dozier,1974,87,0
 Don't You Worry 'Bout A Thing,Stevie Wonder,1974,88,0
 A Very Special Love Song,Charlie Rich,1974,89,0
 My Girl Bill,Jim Stafford,1974,90,0
 My Mistake Was To Love You,Diana Ross & Marvin Gaye,1974,91,0
-Helen Wheels,Paul McCartney & Wings,1974,91,0
+Helen Wheels,Paul McCartney & Wings,1974,92,0
 Wildwood Weed,Jim Stafford,1974,93,0
 Beach Baby,First Class,1974,94,0
 Me And Baby Brother,War,1974,95,0
@@ -2090,41 +2088,41 @@ Welcome Back,John Sebastian,1976,58,0
 Sing A Song,Earth\, Wind & Fire,1976,59,0
 Heaven Must Be Missing An Angel,Tavares,1976,60,0
 I'll Be Good To You,Brothers Johnson,1976,61,0
-Shop Around,Captain & Tennille,1976,63,0
-Saturday Night,Bay City Rollers,1976,64,0
-Island Girl,Elton John,1976,65,0
-Let's Do It Again,Staple Singers,1976,66,0
-Let 'Em In,Wings,1976,67,0
-Baby Face,Wing & A Prayer Fife & Drum Corps,1976,68,0
-This Masquerade,George Benson,1976,69,0
-Evil Woman,Electric Light Orchestra,1976,70,0
-Wham Bam,Silver,1976,71,0
-I'm Easy,Keith Carradine,1976,72,0
-Wake Up Everybody (Pt. 1),Harold Melvin & The Bluenotes,1976,73,0
-Summer,War,1976,74,0
-Let Her In,John Travolta,1976,75,0
-Fox On The Run,Sweet,1976,76,0
-Rhiannon (Will You Ever Win),Fleetwood Mac,1976,77,0
-Got To Get You Into My Life,The Beatles,1976,78,1
-Fanny (Be Tender With My Love),Bee Gees,1976,79,0
-Getaway,Earth\, Wind & Fire,1976,80,0
-She's Gone,Hall & Oates,1976,81,0
-Rock And Roll Music,The Beach Boys,1976,82,0
+Shop Around,Captain & Tennille,1976,62,0
+Saturday Night,Bay City Rollers,1976,63,0
+Island Girl,Elton John,1976,64,0
+Let's Do It Again,Staple Singers,1976,65,0
+Let 'Em In,Wings,1976,66,0
+Baby Face,Wing & A Prayer Fife & Drum Corps,1976,67,0
+This Masquerade,George Benson,1976,68,0
+Evil Woman,Electric Light Orchestra,1976,69,0
+Wham Bam,Silver,1976,70,0
+I'm Easy,Keith Carradine,1976,71,0
+Wake Up Everybody (Pt. 1),Harold Melvin & The Bluenotes,1976,72,0
+Summer,War,1976,73,0
+Let Her In,John Travolta,1976,74,0
+Fox On The Run,Sweet,1976,75,0
+Rhiannon (Will You Ever Win),Fleetwood Mac,1976,76,0
+Got To Get You Into My Life,The Beatles,1976,77,1
+Fanny (Be Tender With My Love),Bee Gees,1976,78,0
+Getaway,Earth\, Wind & Fire,1976,79,0
+She's Gone,Hall & Oates,1976,80,0
+Rock And Roll Music,The Beach Boys,1976,81,0
 Still The One,Orleans,1976,82,0
 You're My Best Friend,Queen,1976,83,0
 With Your Love,Jefferson Starship,1976,84,0
 Slow Ride,Foghat,1976,85,1
 Who'd She Coo,Ohio Players,1976,86,0
-Walk Away From Love,David Ruffin,1976,88,0
-Baby\, I Love Your Way,Peter Frampton,1976,89,1
-Young Hearts Sun Free,Candi Staton,1976,90,0
-Breaking Up's Hard To Do,Neil Sedaka,1976,91,0
-Money Honey,Bay City Rollers,1976,92,0
-Tear The Roof Off The Sucker,Parliament,1976,93,0
-Junk Food Junkie,Larry Groce,1976,94,0
-Tryin' To Get The Feeling Again,Barry Manilow,1976,95,0
-Rock 'n Roll All Nite,Kiss,1976,96,1
-Disco Duck,Rick Dees,1976,97,0
+Walk Away From Love,David Ruffin,1976,87,0
+Baby\, I Love Your Way,Peter Frampton,1976,88,1
+Young Hearts Sun Free,Candi Staton,1976,89,0
+Breaking Up's Hard To Do,Neil Sedaka,1976,90,0
+Money Honey,Bay City Rollers,1976,91,0
+Tear The Roof Off The Sucker,Parliament,1976,92,0
+Junk Food Junkie,Larry Groce,1976,93,0
+Tryin' To Get The Feeling Again,Barry Manilow,1976,94,0
+Rock 'n Roll All Nite,Kiss,1976,95,1
+Disco Duck,Rick Dees,1976,96,0
 The Boys Are Back In Town,Thin Lizzy,1976,97,0
 Take the Money and Run,Steve Miller Band,1976,98,1
 Squeeze Box,The Who,1976,99,0
@@ -3513,7 +3511,7 @@ I Go To Extremes,Billy Joel,1990,82,0
 Whip Appeal,Babyface,1990,83,0
 Oh Girl,Paul Young,1990,84,0
 C'mon And Get My Love,D-Mob With Cathy Dennis,1990,85,0
-(It's Just) The Way That You Love Me,Paula Abdul,1990,85,0
+(It's Just) The Way That You Love Me,Paula Abdul,1990,86,0
 We Can't Go Wrong,Cover Girls,1990,87,0
 When I'm Back On My Feet Again,Michael Bolton,1990,88,0
 Make You Sweat,Keith Sweat,1990,89,0
@@ -3523,7 +3521,7 @@ Forever,Kiss,1990,92,0
 Jerk Out,Time,1990,93,0
 Just A Friend,Biz Markie,1990,94,0
 Whole Wide World,A'me Lorain,1990,95,0
-Without You,Mötley Crüe,1990,96,1
+Without You,MÃ¶tley CrÃ¼e,1990,96,1
 Swing The Mood,Jive Bunny & The Mastermixers,1990,97,0
 Thieves In The Temple,Prince,1990,98,0
 Mentirosa,Mellow Man Ace,1990,99,0
@@ -3613,8 +3611,8 @@ Silent Lucidity,Queensryche,1991,82,0
 I'm Not In Love,Will To Power,1991,83,0
 Piece Of My Heart,Tara Kemp,1991,84,0
 Real Real Real,Jesus Jones,1991,85,0
-Just Another Dream,Cathy Dennis,1991,87,0
-Everybody Plays The Fool,Aaron Neville,1991,88,0
+Just Another Dream,Cathy Dennis,1991,86,0
+Everybody Plays The Fool,Aaron Neville,1991,87,0
 Strike It Up,Black Box,1991,88,0
 Rico Suave,Gerardo,1991,89,0
 Disappear,INXS,1991,90,0
@@ -4027,7 +4025,7 @@ Give It 2 You,Da Brat,1995,97,0
 Best Friend,Brandy,1995,98,0
 Misery,Soul Asylum,1995,99,0
 Can't Stop Lovin' You,Van Halen,1995,100,1
-Macarena (Bayside Boys Mix),Los del Río,1996,1,1
+Macarena (Bayside Boys Mix),Los Del RÃ­o,1996,1,1
 One Sweet Day,Mariah Carey & Boyz II Men,1996,2,0
 Because You Loved Me,Celine Dion,1996,3,0
 Nobody Knows,Tony Rich Project,1996,4,0
@@ -4124,7 +4122,7 @@ Beautiful Life,Ace Of Base,1996,94,0
 Back For Good,Take That,1996,95,0
 I Got Id / Long Road,Pearl Jam,1996,96,0
 Soon As I Get Home,Faith Evans,1996,97,0
-Macarena,Los del Río,1996,98,1
+Macarena,Los Del RÃ­o,1996,98,1
 Only Wanna Be With You,Hootie & The Blowfish,1996,99,0
 Don't Cry,Seal,1996,100,0
 Candle in the Wind,Elton John,1997,1,1
@@ -4208,7 +4206,7 @@ The One I Gave My Heart,Aaliyah,1997,78,0
 Fly Like an Eagle,Seal,1997,79,1
 No Time,Lil' Kim,1997,80,0
 Naked Eye,Luscious Jackson,1997,81,0
-Macarena (Bayside Boys Mix),Los del Río,1997,82,1
+Macarena (Bayside Boys Mix),Los Del RÃ­o,1997,82,1
 On & On,Erykah Badu,1997,83,0
 Don't Wanna Be A Player,Joe,1997,84,0
 I Shot The Sheriff,Warren G,1997,85,0
@@ -4481,7 +4479,7 @@ The Real Slim Shady,Eminem,2000,51,1
 Most Girls,P!nk,2000,52,0
 Wifey,Next,2000,53,0
 Wonderful,Everclear,2000,54,0
-Oops!… I Did It Again,Britney Spears,2000,55,1
+Oops!Å I Did It Again,Britney Spears,2000,55,1
 I Wanna Love You Forever,Jessica Simpson,2000,56,0
 Give Me Just One Night (Una Noche ),98 Degrees,2000,57,0
 Take A Picture,Filter,2000,58,0
@@ -4799,28 +4797,28 @@ I Wonder\, I Wonder\, I Wonder,Eddy Howard,1947,22,0
 My Adobe Hacienda,Eddy Howard,1947,23,0
 Huggin' And Chalkin',Hoagy Carmichael,1947,24,0
 Ol' Buttermilk Sky,Hoagy Carmichael,1947,25,0
-I Love You For Sentimental Reasons,The King Cole Trio,1947,25,0
+I Love You For Sentimental Reasons,The King Cole Trio,1947,26,0
 Mam'selle,Dick Haymes,1947,27,0
-You Do,Vaughn Monroe,1947,27,0
+You Do,Vaughn Monroe,1947,28,0
 Anniversary Song,Guy Lombardo,1947,29,0
 White Christmas (1947 Single Version),Bing Crosby,1947,30,1
-Anniversary Song,Dinah Shore,1947,30,0
+Anniversary Song,Dinah Shore,1947,31,0
 Across The Alley From The Alamo,Mills Brothers,1947,32,0
 Civilization Bongo Bongo Bongo,Andrews Sisters & Danny Kaye,1947,33,0
 The Old Lamplighter,Kay Kyser,1947,34,0
 Peg O' My Heart,Art Lund,1947,35,0
-Open The Door\, Richard,Count Basie,1947,35,0
-You Do,Margaret Whiting,1947,35,0
+Open The Door\, Richard,Count Basie,1947,36,0
+You Do,Margaret Whiting,1947,37,0
 Feudin' And Fightin',Dorothy Shay,1947,38,0
 Linda,Charlie Spivak,1947,39,0
 Managua\, Nicaragua,Guy Lombardo,1947,40,0
-Anniversary Song,Tex Beneke & The Glenn Miller Orchestra,1947,40,0
+Anniversary Song,Tex Beneke & The Glenn Miller Orchestra,1947,41,0
 The Whiffenpoof Song,Bing Crosby,1947,42,0
-How Soon,Vaughn Monroe,1947,42,0
+How Soon,Vaughn Monroe,1947,43,0
 Open The Door\, Richard,Dusty Fletcher,1947,44,0
 I Love You For Sentimental Reasons,Eddy Howard,1947,45,0
 Ol' Buttermilk Sky,Kay Kyser,1947,46,0
-Golden Earrings,Peggy Lee,1947,46,0
+Golden Earrings,Peggy Lee,1947,47,0
 Twelfth Street Rag,Pee Wee Hunt,1948,1,1
 Manana,Peggy Lee,1948,2,0
 Now Is The Hour,Bing Crosby,1948,3,0
@@ -4844,7 +4842,7 @@ Toolie Oolie Doolie,The Andrews Sisters,1948,20,0
 Buttons & Bows,Dinah Shore,1948,21,0
 Golden Earrings,Peggy Lee,1948,22,0
 Baby Face,Art Mooney,1948,23,0
-Too Fat Polka,Arthur Godfrey,1948,23,0
+Too Fat Polka,Arthur Godfrey,1948,24,0
 My Happiness,Ella Fitzgerald,1948,25,0
 Because,Perry Como,1948,26,0
 Serenade Of The Bells,Sammy Kaye,1948,27,0
@@ -4852,9 +4850,9 @@ Until,Tommy Dorsey,1948,28,0
 Williams Tell Overture,Spike Jones,1948,29,0
 Beg Your Pardon,Frankie Carle,1948,30,0
 Underneath The Arches,Primo Scala,1948,31,0
-Louis Blues March,Tex Beneke,1948,31,0
+Louis Blues March,Tex Beneke,1948,32,0
 On a Slow Boat to China,Kay Kyser,1948,33,0
-Woody Woodpecker,Sportsmen & Mel Blanc,1948,33,0
+Woody Woodpecker,Sportsmen & Mel Blanc,1948,34,0
 I'll Dance at Your Wedding,Ray Noble,1948,35,0
 The Dicky-Bird Song,Freddy Martin,1948,36,0
 I'm Looking Over A Four Leaf Clover,Russ Morgan & Mill Herth,1948,37,0
@@ -4893,7 +4891,7 @@ I Don't See Me In Your Eyes Any More,Gordon Jenkins,1949,30,0
 In da Club,50 Cent,2003,1,1
 Ignition (Remix),R. Kelly,2003,2,1
 Get Busy,Sean Paul,2003,3,0
-Crazy In Love,Beyoncé,2003,4,1
+Crazy In Love,BeyoncÃ©,2003,4,1
 When I'm Gone,3 Doors Down,2003,5,1
 Unwell,Matchbox Twenty,2003,6,0
 Right Thurr,Chingy,2003,7,0
@@ -4901,7 +4899,7 @@ Miss You,Aaliyah,2003,8,0
 Picture,Kid Rock,2003,9,1
 Bring Me to Life,Evanescence,2003,10,1
 Get Low (feat. Ying Yang Twins),Lil Jon & The East Side Boyz,2003,11,0
-Baby Boy (feat. Sean Paul),Beyoncé,2003,12,0
+Baby Boy (feat. Sean Paul),BeyoncÃ©,2003,12,0
 Shake ya Tailfeather,Nelly\, P. Diddy & Murphy Lee,2003,13,0
 21 Questions (feat. Nate Dogg),50 Cent,2003,14,0
 All I Have (feat. LL Cool J),Jennifer Lopez,2003,15,0
@@ -4910,7 +4908,7 @@ I Know what you Want (feat. The Flipmode Squad),Busta Rhymes & Mariah Carey,2003
 I'm With You,Avril Lavigne,2003,18,1
 Drift Away (feat. Dobie Gray),Uncle Kracker,2003,19,0
 Magic Stick (feat. 50 Cent),Lil' Kim,2003,20,0
-» 50 Cent,50 Cent,2003,21,0
+Û 50 Cent,50 Cent,2003,21,0
 Bump\, Bump\, Bump,B2K & P. Diddy,2003,22,0
 Into You (feat. Tamia Or Ashanti),Fabolous,2003,23,0
 Can't let you Go (feat. Mike Shorey & Lil' Mo),Fabolous,2003,24,0
@@ -4926,7 +4924,7 @@ No Letting Go,Wayne Wonder,2003,33,0
 Frontin' (feat. Jay-Z),Pharrell,2003,34,0
 Landslide,Dixie Chicks,2003,35,0
 Work It,Missy "Misdemeanor" Elliott,2003,36,0
-'03 Bonnie & Clyde (feat. Beyonce Knowles),Jay-Z,2003,37,0
+'03 Bonnie & Clyde (feat. BeyoncÃ© Knowles),Jay-Z,2003,37,0
 Don't Mess with my Man (feat. Brian & Brandon Casey),Nivea,2003,38,0
 So Gone,Monica,2003,39,0
 Air Force Ones (feat. Kyjuan\, Ali & Murphy Lee),Nelly,2003,40,0
@@ -5007,7 +5005,7 @@ Freek-a-Leek,Petey Pablo,2004,14,0
 Here Without You,3 Doors Down,2004,15,1
 Slow Jamz (feat. Kanye West & Jamie Foxx),Twista,2004,16,0
 Someday (Single Mix),Nickelback,2004,17,1
-Naughty Girl,Beyoncé,2004,18,0
+Naughty Girl,BeyoncÃ©,2004,18,0
 My Immortal,Evanescence,2004,19,1
 Sunshine (feat. Lea),Lil' Flip,2004,20,0
 Dirt off your Shoulder,Jay-Z,2004,21,0
@@ -5015,7 +5013,7 @@ Move Ya Body (Radio Edit),Nina Sky,2004,22,1
 Dip It Low,Christina Milian,2004,23,0
 My Boo,Usher And Alicia Keys,2004,24,0
 One Call Away (feat. J. Weav),Chingy,2004,25,0
-Me\, Myself and I,Beyoncé,2004,26,0
+Me\, Myself and I,BeyoncÃ©,2004,26,0
 Turn Me On (feat. Spragga Benz),Kevin Lyttle,2004,27,0
 The First Cut Is the Deepest,Sheryl Crow,2004,28,1
 You Don't Know my Name,Alicia Keys,2004,29,0
@@ -5058,7 +5056,7 @@ Game Over (Flip),Lil' Flip,2004,65,0
 One Thing,Finger Eleven,2004,66,0
 Headsprung,LL Cool J,2004,67,0
 Damn! (feat. Lil Jon),YoungBloodZ,2004,68,0
-Baby Boy (feat. Sean Paul),Beyoncé,2004,69,0
+Baby Boy (feat. Sean Paul),BeyoncÃ©,2004,69,0
 Get Low (feat. Ying Yang Twins),Lil Jon & The East Side Boyz,2004,70,0
 Drop it Like it's Hot (feat. Pharrell),Snoop Dogg,2004,71,0
 U Should've Known Better,Monica,2004,72,0
@@ -5199,7 +5197,7 @@ Unwritten,Natasha Bedingfield,2006,6,1
 Crazy,Gnarls Barkley,2006,7,1
 Ridin',Chamillionaire & Krayzie Bone,2006,8,1
 SexyBack (feat. Timbaland),Justin Timberlake,2006,9,1
-Check on It (feat. Slim Thug),Beyoncé,2006,10,1
+Check on It (feat. Slim Thug),BeyoncÃ©,2006,10,1
 Be Without You,Mary J. Blige,2006,11,1
 Grillz,Ali & Big Gipp\, Nelly & Paul Wall,2006,12,1
 Over My Head (Cable Car),The Fray,2006,13,1
@@ -5264,7 +5262,7 @@ Who Says you can't Go Home,Bon Jovi,2006,71,0
 Too Little\, Too Late (Radio Version),JoJo,2006,72,1
 Touch It,Busta Rhymes,2006,73,0
 Rompe,Daddy Yankee,2006,74,0
-Deja Vu (feat. Jay-Z),Beyoncé,2006,75,0
+Deja Vu (feat. Jay-Z),BeyoncÃ©,2006,75,0
 Life Is a Highway (Movie Version Long Intro),Rascal Flatts,2006,76,1
 Call Me When You're Sober,Evanescence,2006,77,1
 Jesus\, Take the Wheel,Carrie Underwood,2006,78,1
@@ -5302,7 +5300,7 @@ Heartless,Kanye West,2009,9,1
 Gives You Hell,The All-American Rejects,2009,10,1
 Right Round,Flo Rida,2009,6,1
 I'm Yours,Jason Mraz,2009,7,1
-Single Ladies (Put a Ring on It),Beyoncé,2009,8,1
+Single Ladies (Put a Ring on It),BeyoncÃ©,2009,8,1
 I Gotta Feeling,The Black Eyed Peas,2009,4,1
 Love Story (Pop Mix),Taylor Swift,2009,5,1
 Just Dance,Lady Gaga & Colby O'Donis,2009,3,1
@@ -5446,7 +5444,7 @@ Apologize,OneRepublic & Timbaland,2007,66,1
 Keep Holding On (From "Eragon"),Avril Lavigne,2007,64,1
 Let It Go (feat. Missy Elliott & Lil Kim),Keyshia Cole,2007,65,0
 SexyBack (feat. Timbaland),Justin Timberlake,2007,63,1
-Beautiful Liar,Beyoncé & Shakira,2007,62,1
+Beautiful Liar,BeyoncÃ©\, Shakira,2007,62,1
 Chasing Cars,Snow Patrol,2007,61,1
 Shawty (feat. T-Pain),Plies,2007,60,0
 Welcome To The Black Parade,My Chemical Romance,2007,59,0
@@ -5507,13 +5505,13 @@ Buy U A Drank (Shawty Snappin') (feat. Yung Joc),T-Pain,2007,5,1
 The Sweet Escape,Gwen Stefani,2007,3,1
 Big Girls Don't Cry (Personal),Fergie,2007,4,1
 Umbrella (feat. Jay-Z),Rihanna,2007,2,1
-Irreplaceable,Beyoncé,2007,1,1
+Irreplaceable,BeyoncÃ©,2007,1,1
 Kiss Me Thru the Phone,Soulja Boy Tell 'Em,2009,19,1
 Down (feat. Lil Wayne),Jay Sean,2009,20,1
 The Climb,Miley Cyrus,2009,21,0
 Best I Ever Had,Drake,2009,22,0
 My Life Would Suck Without You,Kelly Clarkson,2009,23,1
-Halo,Beyoncé,2009,24,1
+Halo,BeyoncÃ©,2009,24,1
 Hot N Cold,Katy Perry,2009,25,1
 Second Chance,Shinedown,2009,26,1
 Circus,Britney Spears,2009,27,1
@@ -5537,7 +5535,7 @@ Love Lockdown,Kanye West,2009,44,1
 So What,P!nk,2009,45,1
 Hotel Room Service,Pitbull,2009,46,0
 Crack a Bottle,Eminem\, Dr. Dre & 50 Cent,2009,47,1
-If I were a Boy,Beyoncé,2009,48,1
+If I were a Boy,BeyoncÃ©,2009,48,1
 Turning Me On (feat. Lil Wayne),Keri Hilson,2009,49,0
 I Hate This Part,The Pussycat Dolls,2009,50,1
 Gotta Be Somebody,Nickelback,2009,51,1
@@ -5555,7 +5553,7 @@ Empire State of Mind (feat. Alicia Keys),Jay-Z,2009,62,1
 No Surprise,Daughtry,2009,63,1
 She Wolf,Shakira,2009,64,1
 Break Up (feat. Gucci Mane & Sean Garrett),Mario,2009,65,0
-Sweet Dreams,Beyoncé,2009,66,1
+Sweet Dreams,BeyoncÃ©,2009,66,1
 Every Girl,Young Money,2009,67,0
 Fallin' for You,Colbie Caillat,2009,68,1
 Untouched,The Veronicas,2009,69,0
@@ -5571,7 +5569,7 @@ Disturbia,Rihanna,2009,77,1
 Turn my Swag On,Soulja Boy Tell 'Em,2009,79,0
 Rockin' That Thang,The-Dream,2009,80,0
 Chicken Fried,Zac Brown Band,2009,81,1
-Diva,Beyoncé,2009,82,0
+Diva,BeyoncÃ©,2009,82,0
 Replay,Iyaz,2009,83,1
 Then,Brad Paisley,2009,84,1
 Her Diamonds,Rob Thomas,2009,85,0
@@ -5605,7 +5603,7 @@ I Like It (feat. Pitbull),Enrique Iglesias,2010,12,1
 BedRock,Young Money & Lloyd,2010,13,1
 In My Head,Jason Derulo,2010,14,1
 Rude Boy,Rihanna,2010,15,0
-Telephone (feat. Beyoncé),Lady GaGa,2010,16,1
+Telephone (feat. BeyoncÃ©),Lady Gaga,2010,16,1
 Teenage Dream,Katy Perry,2010,17,1
 Just the Way You Are,Bruno Mars,2010,18,1
 Cooler than Me,Mike Posner,2010,19,0
@@ -5675,7 +5673,7 @@ Hey Daddy (Daddyâ€™s Home) (feat. Plies),Usher,2010,82,0
 There Goes My Baby,Usher,2010,83,0
 Today Was a Fairytale,Taylor Swift,2010,84,1
 Say Something (feat. Drake),Timbaland,2010,85,0
-Sweet Dreams,Beyoncé,2010,86,1
+Sweet Dreams,BeyoncÃ©,2010,86,1
 Use Somebody,Kings of Leon,2010,87,1
 Undo It,Carrie Underwood,2010,88,1
 Eenie Meenie,Sean Kingston & Justin Bieber,2010,89,1
@@ -5775,7 +5773,7 @@ Remind Me (feat. Carrie Underwood),Brad Paisley,2011,82,1
 In The Dark,Dev,2011,83,0
 Backseat (feat. The Cataracs & Dev),New Boyz,2011,84,1
 Headlines,Drake,2011,85,0
-Best Thing I Never Had,Beyoncé,2011,86,0
+Best Thing I Never Had,BeyoncÃ©,2011,86,0
 Don't Wanna Go Home,Jason Derulo,2011,87,0
 Where Them Girls At (feat. Flo Rida & Nicki Minaj),David Guetta,2011,88,0
 She Ain't You,Chris Brown,2011,89,0
@@ -5934,7 +5932,7 @@ Fuckin' Problems (feat. Drake\, 2 Chainz & Kendrick Lamar),ASAP Rocky,2013,41,0
 Beauty And A Beat (feat. Nicki Minaj),Justin Bieber,2013,42,1
 Same Love (feat. Mary Lambert),Macklemore & Ryan Lewis,2013,43,1
 Sweet Nothing (feat. Florence Welch),Calvin Harris,2013,44,0
-Summertime Sadness,Lana Del Rey and Cédric Gervais,2013,45,0
+Summertime Sadness,Lana Del Rey and Cê¥²ic Gervais,2013,45,0
 Home,Phillip Phillips,2013,46,1
 It's Time,Imagine Dragons,2013,47,1
 Power Trip (feat. Miguel),J. Cole,2013,48,0
@@ -5977,7 +5975,7 @@ Adorn,Miguel,2013,84,0
 Hall of Fame (feat. will.i.am),The Script,2013,85,0
 Let Me Love You (Until You Learn to Love Yourself),Ne-Yo,2013,86,1
 U.O.E.N.O. (feat. Future & Rick Ross),Rocko,2013,87,0
-Next to Me,Emeli Sandé,2013,88,0
+Next to Me,Emeli SandÃ©,2013,88,0
 Mama's Broken Heart,Miranda Lambert,2013,89,1
 It Goes Like This,Thomas Rhett,2013,90,1
 Bugatti (feat. Future & Rick Ross),Ace Hood,2013,91,0
@@ -6026,7 +6024,7 @@ Burn,Ellie Goulding,2014,39,1
 Bailando (feat. Descemer Bueno & Gente de Zona),Enrique Iglesias,2014,38,0
 Break Free (feat. Zedd),Ariana Grande,2014,37,1
 Anaconda,Nicki Minaj,2014,36,1
-Drunk in Love (feat. Jay Z) [Video],Beyoncé,2014,35,1
+Drunk in Love (feat. Jay Z),BeyoncÃ©,2014,35,1
 Boom Clap,Charli XCX,2014,34,1
 Summer,Calvin Harris,2014,33,1
 Habits (Stay High),Tove Lo,2014,32,1
@@ -6084,7 +6082,7 @@ Beachin',Jake Owen,2014,91,1
 White Walls (feat. ScHoolboy Q & Hollis),Macklemore & Ryan Lewis,2014,92,0
 She Looks So Perfect,5 Seconds of Summer,2014,93,1
 Stay The Night (feat. Hayley Williams),Zedd,2014,94,1
-Partition (Video),Beyoncé,2014,95,1
+Partition (Video),BeyoncÃ©,2014,95,1
 Studio (feat. BJ the Chicago Kid),ScHoolboy Q,2014,96,1
 0 To 100 / The Catch Up,Drake,2014,97,0
 I Don't Dance,Lee Brice,2014,98,1
@@ -6097,7 +6095,7 @@ Trap Queen,Fetty Wap,2015,4,1
 Sugar,Maroon 5,2015,5,1
 Shut Up and Dance,WALK THE MOON,2015,6,1
 Blank Space,Taylor Swift,2015,7,1
-Watch Me,Silento,2015,8,0
+Watch Me,SilentÃ³,2015,8,0
 Earned It (Fifty Shades Of Grey),The Weeknd,2015,9,0
 The Hills,The Weeknd,2015,10,0
 Cheerleader (Felix Jaehn Remix Radio Edit),Omi,2015,11,1
@@ -6105,10 +6103,10 @@ Can't Feel My Face,The Weeknd,2015,12,1
 Love Me Like You Do (From "Fifty Shades of Grey"),Ellie Goulding,2015,13,1
 Take Me To Church,Hozier,2015,14,0
 Bad Blood,Taylor Swift,2015,15,1
-Lean On (feat. M0),Major Lazer & DJ Snake,2015,16,0
+Lean On (feat. MÃ˜),Major Lazer & DJ Snake,2015,16,0
 Want To Want Me,Jason Derulo,2015,17,0
 Shake It Off,Taylor Swift,2015,18,1
-Where Are Ü Now (with Justin Bieber),Skrillex & Diplo,2015,19,1
+Where Are Ãœ Now (with Justin Bieber),Skrillex & Diplo,2015,19,1
 Fight Song,Rachel Platten,2015,20,1
 679 (feat. Remy Boyz),Fetty Wap,2015,21,0
 Lips Are Movin,Meghan Trainor,2015,22,1
@@ -6150,7 +6148,7 @@ Wildest Dreams,Taylor Swift,2015,57,1
 Stay With Me,Sam Smith,2015,58,1
 You Know You Like It,DJ Snake & AlunaGeorge,2015,59,1
 Uma Thurman,Fall Out Boy,2015,60,0
-7/11,Beyonce,2015,61,0
+7/11,BeyoncÃ©,2015,61,0
 The Heart Wants What It Wants,Selena Gomez,2015,62,1
 Girl Crush,Little Big Town,2015,63,1
 Slow Motion,Trey Songz,2015,64,1
@@ -6214,7 +6212,7 @@ Heathens,Twenty One Pilots,2016,21,0
 PILLOWTALK,ZAYN,2016,22,1
 Stitches,Shawn Mendes,2016,23,1
 Hotline Bling,Drake,2016,24,1
-Cold Water (feat. Justin Bieber & MØ),Major Lazer,2016,25,0
+Cold Water (feat. Justin Bieber & MÃ˜),Major Lazer,2016,25,0
 Send My Love (To Your New Lover),Adele,2016,26,0
 Roses (feat. ROZES),The Chainsmokers,2016,27,1
 Treat You Better,Shawn Mendes,2016,28,0
@@ -6260,7 +6258,7 @@ Unsteady,X Ambassadors,2016,67,0
 Sucker for Pain (feat. X Ambassadors),Lil Wayne\, Wiz Khalifa\, & Imagine Dragons with Logic & Ty Dolla Sign,2016,68,0
 Down in the DM (feat. Nicki Minaj),Yo Gotti,2016,69,0
 Luv,Tory Lanez,2016,70,0
-Sorry,Beyoncé,2016,71,0
+Sorry,BeyoncÃ©,2016,71,0
 Can't Feel My Face,The Weeknd,2016,72,1
 Hymn for the Weekend,Coldplay,2016,73,0
 Say It,Tory Lanez,2016,74,0
@@ -6274,10 +6272,10 @@ On My Mind,Ellie Goulding,2016,81,0
 Pop Style (feat. The Throne),Drake,2016,82,0
 When We Were Young,Adele,2016,83,0
 Hide Away,Daya,2016,84,1
-Lean On (feat. MØ),Major Lazer & DJ Snake,2016,85,0
+Lean On (feat. MÃ˜ & DJ Snake),Major Lazer,2016,85,0
 I Know What You Did Last Summer,Shawn Mendes & Camila Cabello,2016,86,0
 All the Way Up (feat. French Montana & Infared),Fat Joe\, Remy Ma & Jay Z,2016,87,0
-Watch Me,Silentó,2016,88,0
+Watch Me,SilentÃ³,2016,88,0
 Back to Sleep,Chris Brown,2016,89,0
 No Limit (feat. Young Thug),Usher,2016,90,0
 Cut It (feat. Young Dolph),O.T. Genasis,2016,91,0

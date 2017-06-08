@@ -30,28 +30,51 @@ namespace Top100Common
                     await songCollection.InsertOneAsync(document);
                     return document._id.ToString();
                 }
+                else
+                {
+                    throw new Top100Exception(ReasonType.Conflict);
+                }
             }
             catch (MongoException e)
             {
                 Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                throw new Top100Exception(ReasonType.Unknown);
             }
-            return null;
         }
 
-        public async Task<Song> GetAsync(string id)
+        public async Task<Song> GetAsync(int year, int number)
         {
+            var builder = Builders<SongDocument>.Filter;
+            var filter = builder.Empty;
+
+            var yearFilter = builder.Eq(x => x.Song.Year, year);
+            filter = builder.And(yearFilter, filter);
+
+            var numberFilter = builder.Eq(x => x.Song.Number, number);
+            filter = builder.And(numberFilter, filter);
+
             try
             {
-                var filter = Builders<SongDocument>.Filter.Eq(x=>x._id, ObjectId.Parse(id));
-                var document = await songCollection.Find(filter).FirstOrDefaultAsync();
+                var document = await songCollection.Find(filter).FirstAsync();
                 return document.Song;
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine($"ArgumentNullException.  ex={e}");
+                throw new Top100Exception(ReasonType.NotFound);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine($"InvalidOperationException.  ex={e}");
+                throw new Top100Exception(ReasonType.NotFound);
             }
             catch (MongoException e)
             {
                 Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                throw new Top100Exception(ReasonType.Unknown);
             }
-            return null;
         }
+
         public async Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
         {
             var builder = Builders<SongDocument>.Filter;
@@ -115,11 +138,11 @@ namespace Top100Common
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
 
-            var titleFilter = builder.Eq(x => x.Song.Title, song.Title);
-            filter = builder.And(titleFilter, filter);
+            //var titleFilter = builder.Eq(x => x.Song.Title, song.Title);
+            //filter = builder.And(titleFilter, filter);
 
-            var artistFilter = builder.Eq(x => x.Song.Artist, song.Artist);
-            filter = builder.And(artistFilter, filter);
+            //var artistFilter = builder.Eq(x => x.Song.Artist, song.Artist);
+            //filter = builder.And(artistFilter, filter);
 
             var numberFilter = builder.Eq(x => x.Song.Number, song.Number);
             filter = builder.And(numberFilter, filter);
@@ -127,8 +150,8 @@ namespace Top100Common
             var yearFilter = builder.Eq(x => x.Song.Year, song.Year);
             filter = builder.And(yearFilter, filter);
 
-            var ownFilter = builder.Eq(x => x.Song.Own, song.Own);
-            filter = builder.And(ownFilter, filter);
+            //var ownFilter = builder.Eq(x => x.Song.Own, song.Own);
+            //filter = builder.And(ownFilter, filter);
 
             try
             {
@@ -144,7 +167,6 @@ namespace Top100Common
             }
 
             return result;
-
         }
     }
 }
