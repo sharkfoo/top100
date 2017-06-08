@@ -58,7 +58,7 @@ namespace Top100Import
                 {
                     try
                     {
-                        var ret = client.InsertAsync(ParseCSVLine(line));
+                        var ret = client.CreateAsync(ParseCSVLine(line));
                         if (ret.Result != null)
                         {
                             Console.WriteLine($"Added song: {line}");

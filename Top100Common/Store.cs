@@ -20,7 +20,7 @@ namespace Top100Common
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }
-        public async Task<string> InsertAsync(Song song)
+        public async Task<string> CreateAsync(Song song)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace Top100Common
             }
         }
 
-        public async Task<Song> GetAsync(int year, int number)
+        public async Task<Song> ReadAsync(int year, int number)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -74,8 +74,76 @@ namespace Top100Common
                 throw new Top100Exception(ReasonType.Unknown);
             }
         }
+        public async Task<Song> DeleteAsync(int year, int number)
+        {
+            var builder = Builders<SongDocument>.Filter;
+            var filter = builder.Empty;
 
-        public async Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
+            var yearFilter = builder.Eq(x => x.Song.Year, year);
+            filter = builder.And(yearFilter, filter);
+
+            var numberFilter = builder.Eq(x => x.Song.Number, number);
+            filter = builder.And(numberFilter, filter);
+
+            try
+            {
+                var document = await songCollection.Find(filter).FirstAsync();
+                var result = songCollection.DeleteOne(x => x._id == document._id);
+                if (result.DeletedCount == 1)
+                {
+                    return document.Song;
+                }
+            }
+            catch (ArgumentNullException e)
+            {
+                Console.WriteLine($"ArgumentNullException.  ex={e}");
+                throw new Top100Exception(ReasonType.NotFound);
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine($"InvalidOperationException.  ex={e}");
+                throw new Top100Exception(ReasonType.NotFound);
+            }
+            catch (MongoException e)
+            {
+                Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                throw new Top100Exception(ReasonType.Unknown);
+            }
+            return null;
+        }
+
+        public async Task<string> UpdateAsync(Song song)
+        {
+            var dbSong = Find(song);
+            if (dbSong != null)
+            {
+                try
+                {
+                    var result = await songCollection.ReplaceOneAsync(x => x._id == dbSong._id, new SongDocument(dbSong._id, song), new UpdateOptions { IsUpsert = false });
+                    if (result.ModifiedCount == 1)
+                    {
+                        return dbSong._id.ToString();
+                    }
+                    else
+                    {
+                        Console.WriteLine($"ERROR:  Invalid result count={result.MatchedCount}");
+                        throw new Top100Exception(ReasonType.Unknown);
+                    }
+                }
+                catch (MongoException e)
+                {
+                    Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                    throw new Top100Exception(ReasonType.Unknown);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Warning Song not found to update title={song.Title}, artist={song.Artist}, year={song.Year}, number={song.Number}");
+                throw new Top100Exception(ReasonType.NotFound);
+            }
+        }
+
+        public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -131,7 +199,7 @@ namespace Top100Common
             return retList;
         }
 
-        public SongDocument Find(Song song)
+        private SongDocument Find(Song song)
         {
             SongDocument result = null;
 

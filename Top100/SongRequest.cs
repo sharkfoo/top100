@@ -8,5 +8,6 @@ namespace Top100
     {
         public string Title { get; set; }
         public string Artist { get; set; }
+        public bool Own { get; set; }
     }
 }

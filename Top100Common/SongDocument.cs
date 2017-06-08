@@ -14,6 +14,12 @@ namespace Top100Common
             Song = song;
         }
 
+        public SongDocument(ObjectId id, Song song)
+        {
+            _id = id;
+            Song = song;
+        }
+
         public ObjectId _id { get; set; }
         public Song Song{ get; set; }
     }

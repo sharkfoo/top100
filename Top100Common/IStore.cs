@@ -9,8 +9,11 @@ namespace Top100Common
 {
     public interface IStore
     {
-        Task<string> InsertAsync(Song song);
-        Task<Song> GetAsync(int year, int number);
-        Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString);
+        Task<string> CreateAsync(Song song);
+        Task<Song> ReadAsync(int year, int number);
+        Task<Song> DeleteAsync(int year, int number);
+        Task<string> UpdateAsync(Song song);
+
+        Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString);
     }
 }

@@ -34,11 +34,11 @@ namespace Top100.Controllers
                 Artist = songRequest.Artist,
                 Year = year,
                 Number = number,
-                Own = false
+                Own = songRequest.Own
             };
             try
             {
-                var ret = await client.InsertAsync(song);
+                var ret = await client.CreateAsync(song);
 
                 if (ret != null)
                 {
@@ -67,8 +67,63 @@ namespace Top100.Controllers
         {
             try
             {
-                var ret = await client.GetAsync(year, number);
+                var ret = await client.ReadAsync(year, number);
                 return Ok(ret);
+            }
+            catch (Top100Exception e)
+            {
+                switch (e.Reason)
+                {
+                    case ReasonType.NotFound:
+                        return NotFound();
+                }
+            }
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        [Route("Songs/{year:int}/{number:int}")]
+        [HttpDelete]
+        public async Task<IActionResult> DeleteAsync(int year, int number)
+        {
+            try
+            {
+                var ret = await client.DeleteAsync(year, number);
+                if (ret != null)
+                {
+                    return Ok(ret);
+                }
+            }
+            catch (Top100Exception e)
+            {
+                switch (e.Reason)
+                {
+                    case ReasonType.NotFound:
+                        return NotFound();
+                }
+            }
+            return StatusCode((int)HttpStatusCode.InternalServerError);
+        }
+
+        [Route("Songs/{year:int}/{number:int}")]
+        [HttpPut]
+        public async Task<IActionResult> PutAsync(int year, int number, [FromBody]SongRequest songRequest)
+        {
+            try
+            {
+                var song = new Song
+                {
+                    Title = songRequest.Title,
+                    Artist = songRequest.Artist,
+                    Year = year,
+                    Number = number,
+                    Own = songRequest.Own
+                };
+
+                var ret = await client.UpdateAsync(song);
+                if (ret != null)
+                {
+                    return Ok(ret);
+                }
             }
             catch (Top100Exception e)
             {
@@ -91,7 +146,7 @@ namespace Top100.Controllers
             var numberFilter = Request.Query["number"];
             var ownFilter = Request.Query["own"];
 
-            var retList = await client.FindAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter);
+            var retList = await client.SearchAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter);
             if (retList != null)
             {
                 return Ok(retList);
