@@ -18,14 +18,14 @@ namespace Top100Import
             var song = new Song();
 
             line = line.Replace(@"\,", DELIM);
-            string[] split = line.Split(',');
+            var split = line.Split(',');
             if (split.Length == 5)
             {
                 song.Title = split[0].Replace(DELIM, ",").Trim();
                 song.Artist = split[1].Replace(DELIM, ",").Trim();
-                song.Year = Int32.Parse(split[2].Replace(DELIM, ",").Trim());
-                song.Number = Int32.Parse(split[3].Replace(DELIM, ",").Trim());
-                int own = Int32.Parse(split[4].Replace(DELIM, ",").Trim());
+                song.Year = int.Parse(split[2].Replace(DELIM, ",").Trim());
+                song.Number = int.Parse(split[3].Replace(DELIM, ",").Trim());
+                var own = int.Parse(split[4].Replace(DELIM, ",").Trim());
                 if (own == 1)
                 {
                     song.Own = true;
@@ -53,7 +53,7 @@ namespace Top100Import
             var fileStream = new FileStream(file, FileMode.Open);
             using (var csvFile = new StreamReader(fileStream, Encoding.UTF8))
             {
-                string line = "";
+                var line = "";
                 while ((line = csvFile.ReadLine()) != null)
                 {
                     try

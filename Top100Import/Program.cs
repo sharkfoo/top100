@@ -7,13 +7,13 @@ using Top100Common;
 
 namespace Top100Import
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
             var config = builder.Build();
-            string mongoConnectionString = config["MONGO_CONNECTION_STRING"];
+            var mongoConnectionString = config["MONGO_CONNECTION_STRING"];
 
             var client = new Store(mongoConnectionString);
 

@@ -12,7 +12,7 @@ namespace Top100Common
 {
     public class Store : IStore
     {
-        private IMongoDatabase db;
+        private readonly IMongoDatabase db;
         private IMongoCollection<SongDocument> songCollection => db.GetCollection<SongDocument>("Top100");
 
         public Store(string connectionString)
@@ -149,38 +149,38 @@ namespace Top100Common
             var filter = builder.Empty;
             var retList = new List<Song>();
 
-            if (!String.IsNullOrWhiteSpace(titleFilterString))
+            if (!string.IsNullOrWhiteSpace(titleFilterString))
             {
                 var titleFilter = builder.Regex(x => x.Song.Title, new BsonRegularExpression(titleFilterString, "i"));
                 filter = builder.And(titleFilter, filter);
             }
-            if (!String.IsNullOrWhiteSpace(artistFilterString))
+            if (!string.IsNullOrWhiteSpace(artistFilterString))
             {
                 var artistFilter = builder.Regex(x => x.Song.Artist, new BsonRegularExpression(artistFilterString, "i"));
                 filter = builder.And(artistFilter, filter);
             }
-            if (!String.IsNullOrWhiteSpace(yearFilterString))
+            if (!string.IsNullOrWhiteSpace(yearFilterString))
             {
                 int year;
-                if (Int32.TryParse(yearFilterString, out year))
+                if (int.TryParse(yearFilterString, out year))
                 {
                     var yearFilter = builder.Eq(x => x.Song.Year, year);
                     filter = builder.And(yearFilter, filter);
                 }
             }
-            if (!String.IsNullOrWhiteSpace(numberFilterString))
+            if (!string.IsNullOrWhiteSpace(numberFilterString))
             {
                 int number;
-                if (Int32.TryParse(numberFilterString, out number))
+                if (int.TryParse(numberFilterString, out number))
                 {
                     var numberFilter = builder.Eq(x => x.Song.Number, number);
                     filter = builder.And(numberFilter, filter);
                 }
             }
-            if (!String.IsNullOrWhiteSpace(ownFilterString))
+            if (!string.IsNullOrWhiteSpace(ownFilterString))
             {
                 bool own = false;
-                if (Boolean.TryParse(ownFilterString, out own))
+                if (bool.TryParse(ownFilterString, out own))
                 {
                     var ownFilter = builder.Eq(x => x.Song.Own, own);
                     filter = builder.And(ownFilter, filter);
