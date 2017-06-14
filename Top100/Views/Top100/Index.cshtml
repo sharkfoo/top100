@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Top 100";
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>  
+    $(document).ready(function () {
+        $.ajax({
+            type: "GET",
+            url: "API/v1/Top100/Songs?Year=1985",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            success: function (data) {
+                //alert(JSON.stringify(data));
+                $("#DIV").html('');
+                var DIV = '';
+                $.each(data, function (i, item) {
+                    var rows = "<tr>" +
+                        "<td id='Year'>" + item.year + "</td>" +
+                        "<td id='Number'>" + item.number + "</td>" +
+                        "<td id='Title'>" + item.title + "</td>" +
+                        "<td id='Artist'>" + item.artist + "</td>" +
+                        "<td id='Own'>" + item.own + "</td>" +
+                        "</tr>";
+                    $('#Table').append(rows);
+                }); //End of foreach Loop
+                console.log(data);
+            }, //End of AJAX Success function
+
+            failure: function (data) {
+                alert(data.responseText);
+            }, //End of AJAX failure function
+            error: function (data) {
+                alert(data.responseText);
+            } //End of AJAX error function
+
+        });
+    });
+</script>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Top 100 Songs
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered" id="Table">
+            <tr>
+                <th>Year</th>
+                <th>Number</th>
+                <th>Title</th>
+                <th>Artist</th>
+                <th>Own</th>
+            </tr>
+        </table>
+    </div>
+</div>

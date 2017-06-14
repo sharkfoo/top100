@@ -17,6 +17,10 @@ namespace Top100Common
 
         public Store(string connectionString)
         {
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                connectionString = "mongodb://127.0.0.1:27018/top100";
+            }
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }

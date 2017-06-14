@@ -13,7 +13,6 @@ using System.Net;
 
 namespace Top100.Controllers
 {
-    [Route("/API/v1/Top100")]
     public class Top100Controller : Controller
     {
         private IStore client;
@@ -23,8 +22,13 @@ namespace Top100.Controllers
             this.client = client;
         }
 
+        public IActionResult Index()
+        {
+            return View();
+        }
+
         //Create
-        [Route("Songs/{year:int}/{number:int}")]
+        [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpPost]
         public async Task<IActionResult> CreateAsync(int year, int number, [FromBody]SongRequest songRequest)
         {
@@ -61,7 +65,7 @@ namespace Top100.Controllers
         }
 
         //Get
-        [Route("Songs/{year:int}/{number:int}")]
+        [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpGet]
         public async Task<IActionResult> GetAsync(int year, int number)
         {
@@ -81,7 +85,7 @@ namespace Top100.Controllers
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
-        [Route("Songs/{year:int}/{number:int}")]
+        [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpDelete]
         public async Task<IActionResult> DeleteAsync(int year, int number)
         {
@@ -104,7 +108,7 @@ namespace Top100.Controllers
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
-        [Route("Songs/{year:int}/{number:int}")]
+        [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpPut]
         public async Task<IActionResult> PutAsync(int year, int number, [FromBody]SongRequest songRequest)
         {
@@ -136,7 +140,7 @@ namespace Top100.Controllers
             return StatusCode((int)HttpStatusCode.InternalServerError);
         }
 
-        [Route("Songs")]
+        [Route("/API/v1/Top100/Songs")]
         [HttpGet]
         public async Task<IActionResult> FindAsync()
         {
