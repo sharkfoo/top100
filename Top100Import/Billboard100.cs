@@ -26,18 +26,17 @@ namespace Top100Import
                 song.Year = int.Parse(split[2].Replace(DELIM, ",").Trim());
                 song.Number = int.Parse(split[3].Replace(DELIM, ",").Trim());
                 var own = int.Parse(split[4].Replace(DELIM, ",").Trim());
-                if (own == 1)
+                switch (own)
                 {
-                    song.Own = true;
-                }
-                else if (own == 0)
-                {
-                    song.Own = false;
-                }
-                else
-                {
-                    Console.WriteLine($"ERROR: own={own}");
-                    throw new ArgumentOutOfRangeException();
+                    case 1:
+                        song.Own = true;
+                        break;
+                    case 0:
+                        song.Own = false;
+                        break;
+                    default:
+                        Console.WriteLine($"ERROR: own={own}");
+                        throw new ArgumentOutOfRangeException();
                 }
             }
             else

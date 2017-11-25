@@ -10,7 +10,7 @@ namespace Top100
     {
         public SongResult(Song song)
         {
-            this.Song = song;
+            Song = song;
         }
 
         public Song Song { get; set; }

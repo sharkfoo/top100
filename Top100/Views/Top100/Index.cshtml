@@ -3,17 +3,18 @@
 }
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
-<script>  
-    $(document).ready(function () {
+<script>
+    function doSearch(year, number, title, artist, own) {
         $.ajax({
             type: "GET",
-            url: "API/v1/Top100/Songs?Year=1985",
+            url: "API/v1/Top100/Songs?Year=" + year + "&Number=" + number + "&Title=" + title + "&Artist=" + artist + "&Own" + own,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+
             success: function (data) {
-                //alert(JSON.stringify(data));
                 $("#DIV").html('');
                 var DIV = '';
+                 $('#Table').find("tr:gt(0)").remove();
                 $.each(data, function (i, item) {
                     var rows = "<tr>" +
                         "<td id='Year'>" + item.year + "</td>" +
@@ -30,11 +31,51 @@
             failure: function (data) {
                 alert(data.responseText);
             }, //End of AJAX failure function
+
             error: function (data) {
                 alert(data.responseText);
             } //End of AJAX error function
 
         });
+    }
+
+</script>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        Search
+    </div>
+    <div class="panel-body">
+        <form id="searchForm" action="/" method="GET">
+            <table class="table table-bordered" id="InputTable">
+                <tr>
+                    <th>Year</th>
+                    <th>Number</th>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    <th>Own</th>
+                </tr>
+                <tr>
+                    <td><input type="text" name="year" id="yearId"/></td>
+                    <td><input type="text" name="number" id="numberId"/></td>
+                    <td><input type="text" name="title" id="titleId"/></td>
+                    <td><input type="text" name="artist" id="artistId"/></td>
+                    <td><input type="checkbox" name="own" id="ownId"/></td>
+                </tr>
+            </table>
+            <input type="submit" name="Submit"/>
+        </form>
+    </div>    
+</div>
+<script>
+    $("#searchForm").submit(function (event) {
+        var year = $("#yearId").val();
+        var number = $("#numberId").val();
+        var title = $("#titleId").val();
+        var artist = $("#artistId").val();
+        var own = $("#ownId").val();
+        doSearch(year, number, title, artist, own);
+        event.preventDefault();
     });
 </script>
 <div class="panel panel-primary">

@@ -19,7 +19,7 @@ namespace Top100Common
         {
             if (string.IsNullOrEmpty(connectionString))
             {
-                connectionString = "mongodb://127.0.0.1:27018/top100";
+                connectionString = "mongodb://127.0.0.1:27019/top100";
             }
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
@@ -34,10 +34,7 @@ namespace Top100Common
                     await songCollection.InsertOneAsync(document);
                     return document._id.ToString();
                 }
-                else
-                {
-                    throw new Top100Exception(ReasonType.Conflict);
-                }
+                throw new Top100Exception(ReasonType.Conflict);
             }
             catch (MongoException e)
             {
@@ -128,11 +125,8 @@ namespace Top100Common
                     {
                         return dbSong._id.ToString();
                     }
-                    else
-                    {
-                        Console.WriteLine($"ERROR:  Invalid result count={result.MatchedCount}");
-                        throw new Top100Exception(ReasonType.Unknown);
-                    }
+                    Console.WriteLine($"ERROR:  Invalid result count={result.MatchedCount}");
+                    throw new Top100Exception(ReasonType.Unknown);
                 }
                 catch (MongoException e)
                 {
@@ -140,11 +134,8 @@ namespace Top100Common
                     throw new Top100Exception(ReasonType.Unknown);
                 }
             }
-            else
-            {
-                Console.WriteLine($"Warning Song not found to update title={song.Title}, artist={song.Artist}, year={song.Year}, number={song.Number}");
-                throw new Top100Exception(ReasonType.NotFound);
-            }
+            Console.WriteLine($"Warning Song not found to update title={song.Title}, artist={song.Artist}, year={song.Year}, number={song.Number}");
+            throw new Top100Exception(ReasonType.NotFound);
         }
 
         public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
@@ -165,8 +156,7 @@ namespace Top100Common
             }
             if (!string.IsNullOrWhiteSpace(yearFilterString))
             {
-                int year;
-                if (int.TryParse(yearFilterString, out year))
+                if (int.TryParse(yearFilterString, out var year))
                 {
                     var yearFilter = builder.Eq(x => x.Song.Year, year);
                     filter = builder.And(yearFilter, filter);
@@ -174,8 +164,7 @@ namespace Top100Common
             }
             if (!string.IsNullOrWhiteSpace(numberFilterString))
             {
-                int number;
-                if (int.TryParse(numberFilterString, out number))
+                if (int.TryParse(numberFilterString, out var number))
                 {
                     var numberFilter = builder.Eq(x => x.Song.Number, number);
                     filter = builder.And(numberFilter, filter);
@@ -183,8 +172,7 @@ namespace Top100Common
             }
             if (!string.IsNullOrWhiteSpace(ownFilterString))
             {
-                bool own = false;
-                if (bool.TryParse(ownFilterString, out own))
+                if (bool.TryParse(ownFilterString, out var own))
                 {
                     var ownFilter = builder.Eq(x => x.Song.Own, own);
                     filter = builder.And(ownFilter, filter);

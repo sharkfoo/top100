@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+//
+// © Copyright 2017 Kevin Pearson
+//
+using System;
 
 namespace Top100Common
 {

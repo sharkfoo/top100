@@ -9,23 +9,18 @@ using System;
 using Microsoft.AspNetCore.Http.Extensions;
 using System.Net;
 
-// For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace Top100.Controllers
 {
     public class Top100Controller : Controller
     {
-        private IStore client;
+        private readonly IStore client;
 
         public Top100Controller(IStore client)
         {
             this.client = client;
         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
         //Create
         [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
@@ -46,7 +41,7 @@ namespace Top100.Controllers
 
                 if (ret != null)
                 {
-                    var resourceUri = new Uri(UriHelper.GetDisplayUrl(Request));
+                    var resourceUri = new Uri(Request.GetDisplayUrl());
                     Console.WriteLine($"Uri={resourceUri}");
                     return Created(resourceUri, song);
                 }
