@@ -7,7 +7,7 @@
     function doSearch(year, number, title, artist, own) {
         $.ajax({
             type: "GET",
-            url: "API/v1/Top100/Songs?Year=" + year + "&Number=" + number + "&Title=" + title + "&Artist=" + artist + "&Own" + own,
+            url: "API/v1/Top100/Songs?Year=" + year + "&Number=" + number + "&Title=" + title + "&Artist=" + artist + "&Own=" + own,
             contentType: "application/json; charset=utf-8",
             dataType: "json",
 
@@ -17,7 +17,8 @@
                  $('#Table').find("tr:gt(0)").remove();
                 $.each(data, function (i, item) {
                     var rows = "<tr>" +
-                        "<td id='Year'>" + item.year + "</td>" +
+                        //"<td id='Year'>" + item.year + "</a>" + "</td>" +
+                        "<td id='Year'>" + "<a href=\"" + encodeURI("http://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=" + item.title + "&artistTerm=" + item.artist) + "\">" + item.year + "</a>" + "</td>" +
                         "<td id='Number'>" + item.number + "</td>" +
                         "<td id='Title'>" + item.title + "</td>" +
                         "<td id='Artist'>" + item.artist + "</td>" +
@@ -73,7 +74,15 @@
         var number = $("#numberId").val();
         var title = $("#titleId").val();
         var artist = $("#artistId").val();
-        var own = $("#ownId").val();
+        var own = "false";
+        if ($("#ownId").is(":checked"))
+        {
+            own = "true";
+        }
+        else
+        {
+            own = "false";
+        }
         doSearch(year, number, title, artist, own);
         event.preventDefault();
     });
