@@ -216,7 +216,7 @@ namespace Top100Common
             try
             {
                 var cursor = songCollection.Find(filter);
-                if (cursor?.Count() > 0)
+                if (cursor?.CountDocuments() > 0)
                 {
                     result = cursor.First();
                 }
