@@ -1,4 +1,4 @@
-﻿FROM microsoft/dotnet:2.0-sdk
+﻿FROM microsoft/dotnet:2.2-sdk-alpine
 
 #Restore
 WORKDIR /Top100Common
