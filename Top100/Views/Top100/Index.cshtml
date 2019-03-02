@@ -74,14 +74,10 @@
         var number = $("#numberId").val();
         var title = $("#titleId").val();
         var artist = $("#artistId").val();
-        var own = "false";
+        var own = "";
         if ($("#ownId").is(":checked"))
         {
             own = "true";
-        }
-        else
-        {
-            own = "false";
         }
         doSearch(year, number, title, artist, own);
         event.preventDefault();
