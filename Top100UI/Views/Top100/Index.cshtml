@@ -17,8 +17,7 @@
                  $('#Table').find("tr:gt(0)").remove();
                 $.each(data, function (i, item) {
                     var rows = "<tr>" +
-                        //"<td id='Year'>" + item.year + "</a>" + "</td>" +
-                        "<td id='Year'>" + "<a href=\"" + encodeURI("http://phobos.apple.com/WebObjects/MZSearch.woa/wa/advancedSearchResults?songTerm=" + item.title + "&artistTerm=" + item.artist) + "\">" + item.year + "</a>" + "</td>" +
+                        "<td id='Year'>" + "<a href=\"" + encodeURI("https://search.itunes.apple.com/WebObjects/MZSearch.woa/wa/advancedSearch?songTerm=" + item.title + "&artistTerm=" + item.artist) + "\">" + item.year + "</a>" + "</td>" +
                         "<td id='Number'>" + item.number + "</td>" +
                         "<td id='Title'>" + item.title + "</td>" +
                         "<td id='Artist'>" + item.artist + "</td>" +

@@ -21,11 +21,11 @@ services:
       MONGO_CONNECTION_STRING: mongodb://mongo/top100
       ASPNETCORE_ENVIRONMENT: Development
 
-  top100:
-    image: kpearson/top100:latest
+  top100ui:
+    image: kpearson/top100ui:latest
     build:
       context: .
-      dockerfile: Top100/Dockerfile
+      dockerfile: Top100UI/Dockerfile
       args:
         - port=5000
     depends_on:
