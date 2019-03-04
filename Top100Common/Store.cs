@@ -7,6 +7,7 @@ using MongoDB.Driver;
 using System.Threading.Tasks;
 using MongoDB.Bson;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace Top100Common
 {
@@ -24,17 +25,17 @@ namespace Top100Common
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }
-        public async Task<string> CreateAsync(Song song)
+        public async Task<string> CreateAsync(Song song, CancellationToken cancelToken)
         {
             try
             {
-                if (Find(song) == null)
+                if (await Find(song, cancelToken) == null)
                 {
                     var document = new SongDocument(song);
-                    await songCollection.InsertOneAsync(document);
+                    await songCollection.InsertOneAsync(document, null, cancelToken);
                     return document._id.ToString();
                 }
-                throw new Top100Exception(ReasonType.Conflict);
+                    throw new Top100Exception(ReasonType.Conflict);
             }
             catch (MongoException e)
             {
@@ -43,7 +44,38 @@ namespace Top100Common
             }
         }
 
-        public async Task<Song> ReadAsync(int year, int number)
+        public async Task<string> CreateOrUpdateAsync(Song song, CancellationToken cancelToken)
+        {
+            try
+            {
+                var songDb = await Find(song, cancelToken);
+                if (songDb == null)
+                {
+                    var document = new SongDocument(song);
+                    await songCollection.InsertOneAsync(document, null, cancelToken);
+                    return document._id.ToString();
+                }
+                else
+                {
+                    if (!songDb.Equals(song))
+                    {
+                        var id = await UpdateAsync(song, cancelToken);
+                        if (id != songDb._id.ToString())
+                        {
+                            throw new Top100Exception(ReasonType.Conflict);
+                        }
+                    }
+                    return songDb._id.ToString();
+                }
+            }
+            catch (MongoException e)
+            {
+                Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                throw new Top100Exception(ReasonType.Unknown);
+            }
+        }
+
+        public async Task<Song> ReadAsync(int year, int number, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -56,8 +88,8 @@ namespace Top100Common
 
             try
             {
-                var document = await songCollection.Find(filter).FirstAsync();
-                return document.Song;
+                var songDb = await songCollection.Find(filter).FirstAsync(cancelToken);
+                return songDb.Song;
             }
             catch (ArgumentNullException e)
             {
@@ -75,7 +107,7 @@ namespace Top100Common
                 throw new Top100Exception(ReasonType.Unknown);
             }
         }
-        public async Task<Song> DeleteAsync(int year, int number)
+        public async Task<Song> DeleteAsync(int year, int number, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -88,8 +120,8 @@ namespace Top100Common
 
             try
             {
-                var document = await songCollection.Find(filter).FirstAsync();
-                var result = songCollection.DeleteOne(x => x._id == document._id);
+                var document = await songCollection.Find(filter).FirstAsync(cancelToken);
+                var result = songCollection.DeleteOne(x => x._id == document._id, cancelToken);
                 if (result.DeletedCount == 1)
                 {
                     return document.Song;
@@ -113,32 +145,40 @@ namespace Top100Common
             return null;
         }
 
-        public async Task<string> UpdateAsync(Song song)
+        public async Task<string> UpdateAsync(Song song, CancellationToken cancelToken)
         {
-            var dbSong = Find(song);
+            var dbSong = await Find(song, cancelToken);
             if (dbSong != null)
             {
-                try
+                if (!dbSong.Equals(song))
                 {
-                    var result = await songCollection.ReplaceOneAsync(x => x._id == dbSong._id, new SongDocument(dbSong._id, song), new UpdateOptions { IsUpsert = false });
-                    if (result.ModifiedCount == 1)
+                    try
                     {
-                        return dbSong._id.ToString();
+                        var result = await songCollection.ReplaceOneAsync(x => x._id == dbSong._id, new SongDocument(dbSong._id, song), new UpdateOptions {IsUpsert = false}, cancelToken);
+                        if (result.ModifiedCount == 1)
+                        {
+                            return dbSong._id.ToString();
+                        }
+
+                        Console.WriteLine($"ERROR:  Invalid result modified={result.ModifiedCount}, matched={result.MatchedCount}");
+                        throw new Top100Exception(ReasonType.Unknown);
                     }
-                    Console.WriteLine($"ERROR:  Invalid result count={result.MatchedCount}");
-                    throw new Top100Exception(ReasonType.Unknown);
+                    catch (MongoException e)
+                    {
+                        Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
+                        throw new Top100Exception(ReasonType.Unknown);
+                    }
                 }
-                catch (MongoException e)
+                else
                 {
-                    Console.WriteLine($"Mongo Exception in Insert.  ex={e}");
-                    throw new Top100Exception(ReasonType.Unknown);
+                    return dbSong._id.ToString();
                 }
             }
             Console.WriteLine($"Warning Song not found to update title={song.Title}, artist={song.Artist}, year={song.Year}, number={song.Number}");
             throw new Top100Exception(ReasonType.NotFound);
         }
 
-        public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString)
+        public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -180,7 +220,7 @@ namespace Top100Common
             }
             try
             {
-                await songCollection.Find(filter).SortBy(x=>x.Song.Year).ThenBy(x=>x.Song.Number).ForEachAsync(x => retList.Add(x.Song));
+                await songCollection.Find(filter).SortBy(x=>x.Song.Year).ThenBy(x=>x.Song.Number).ForEachAsync(x => retList.Add(x.Song), cancelToken);
                 Console.WriteLine($"FindAsync found count={retList.Count} documents");
             }
             catch (MongoException ex)
@@ -191,7 +231,7 @@ namespace Top100Common
             return retList;
         }
 
-        private SongDocument Find(Song song)
+        private async Task<SongDocument> Find(Song song, CancellationToken cancelToken)
         {
             SongDocument result = null;
 
@@ -216,10 +256,8 @@ namespace Top100Common
             try
             {
                 var cursor = songCollection.Find(filter);
-                if (cursor?.CountDocuments() > 0)
-                {
-                    result = cursor.First();
-                }
+                if (await cursor.CountDocumentsAsync(cancelToken) == 1)
+                    result = await cursor.FirstAsync(cancelToken);
             }
             catch (MongoException ex)
             {

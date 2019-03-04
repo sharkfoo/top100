@@ -5,6 +5,8 @@
 using System;
 using System.IO;
 using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 using Top100Common;
 
 namespace Top100Import
@@ -47,7 +49,7 @@ namespace Top100Import
             return song;
         }
 
-        public static void ImportCSV(IStore client, string file)
+        public static async Task ImportCSV(IStore client, string file)
         {
             var fileStream = new FileStream(file, FileMode.Open);
             using (var csvFile = new StreamReader(fileStream, Encoding.UTF8))
@@ -57,11 +59,8 @@ namespace Top100Import
                 {
                     try
                     {
-                        var ret = client.CreateAsync(ParseCSVLine(line));
-                        if (ret.Result != null)
-                        {
-                            Console.WriteLine($"Added song: {line}");
-                        }
+                        var ret = await client.CreateOrUpdateAsync(ParseCSVLine(line), CancellationToken.None);
+                        Console.WriteLine($"Added song: {line}");
                     }
                     catch(Exception e)
                     {

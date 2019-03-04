@@ -8,6 +8,7 @@ using Top100Common;
 using System;
 using Microsoft.AspNetCore.Http.Extensions;
 using System.Net;
+using System.Threading;
 
 namespace Top100.Controllers
 {
@@ -25,7 +26,7 @@ namespace Top100.Controllers
         //Create
         [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpPost]
-        public async Task<IActionResult> CreateAsync(int year, int number, [FromBody]SongRequest songRequest)
+        public async Task<IActionResult> CreateAsync(int year, int number, [FromBody]SongRequest songRequest, CancellationToken cancelToken)
         {
             var song = new Song
             {
@@ -37,7 +38,7 @@ namespace Top100.Controllers
             };
             try
             {
-                var ret = await client.CreateAsync(song);
+                var ret = await client.CreateAsync(song, cancelToken);
 
                 if (ret != null)
                 {
@@ -62,11 +63,11 @@ namespace Top100.Controllers
         //Get
         [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpGet]
-        public async Task<IActionResult> GetAsync(int year, int number)
+        public async Task<IActionResult> GetAsync(int year, int number, CancellationToken cancelToken)
         {
             try
             {
-                var ret = await client.ReadAsync(year, number);
+                var ret = await client.ReadAsync(year, number, cancelToken);
                 return Ok(ret);
             }
             catch (Top100Exception e)
@@ -82,11 +83,11 @@ namespace Top100.Controllers
 
         [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpDelete]
-        public async Task<IActionResult> DeleteAsync(int year, int number)
+        public async Task<IActionResult> DeleteAsync(int year, int number, CancellationToken cancelToken)
         {
             try
             {
-                var ret = await client.DeleteAsync(year, number);
+                var ret = await client.DeleteAsync(year, number, cancelToken);
                 if (ret != null)
                 {
                     return Ok(ret);
@@ -105,7 +106,7 @@ namespace Top100.Controllers
 
         [Route("/API/v1/Top100/Songs/{year:int}/{number:int}")]
         [HttpPut]
-        public async Task<IActionResult> PutAsync(int year, int number, [FromBody]SongRequest songRequest)
+        public async Task<IActionResult> PutAsync(int year, int number, [FromBody]SongRequest songRequest, CancellationToken cancelToken)
         {
             try
             {
@@ -118,7 +119,7 @@ namespace Top100.Controllers
                     Own = songRequest.Own
                 };
 
-                var ret = await client.UpdateAsync(song);
+                var ret = await client.UpdateAsync(song, cancelToken);
                 if (ret != null)
                 {
                     return Ok(ret);
@@ -137,7 +138,7 @@ namespace Top100.Controllers
 
         [Route("/API/v1/Top100/Songs")]
         [HttpGet]
-        public async Task<IActionResult> FindAsync()
+        public async Task<IActionResult> FindAsync(CancellationToken cancelToken)
         {
             var titleFilter = Request.Query["title"];
             var artistFilter = Request.Query["artist"];
@@ -145,7 +146,7 @@ namespace Top100.Controllers
             var numberFilter = Request.Query["number"];
             var ownFilter = Request.Query["own"];
 
-            var retList = await client.SearchAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter);
+            var retList = await client.SearchAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter, cancelToken);
             if (retList != null)
             {
                 return Ok(retList);

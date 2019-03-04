@@ -22,5 +22,9 @@ namespace Top100Common
 
         public ObjectId _id { get; set; }
         public Song Song{ get; set; }
+        public bool Equals(Song s)
+        {
+            return Song.Equals(s);
+        }
     }
 }
