@@ -16,4 +16,4 @@ RUN ["dotnet", "publish", "-c", "Release", "-o", "out"]
 
 #Run
 WORKDIR /Top100Import/out/
-ENTRYPOINT ["dotnet", "Top100Import.dll"]
+ENTRYPOINT ["dotnet", "Top100Import.dll", "top100.csv"]
