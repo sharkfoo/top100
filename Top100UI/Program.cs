@@ -21,7 +21,6 @@ namespace Top100
                     logging.ClearProviders();
                     logging.AddConsole();
                 })
-                .UseApplicationInsights()
                 .Build();
 
             host.Run();
