@@ -1,29 +1,29 @@
 ﻿using System;
 
-namespace Top40Modify
+namespace Top100Modify
 {
-    public class Top40Timer
+    public class Top100Timer
     {
         public DateTime StartTime { get; set; }
         public string Title { get; set; }
 
-        public Top40Timer()
+        public Top100Timer()
         {
         }
 
-        public static Top40Timer Start(string title)
+        public static Top100Timer Start(string title)
         {
-            Top40Timer timer = new Top40Timer();
+            Top100Timer timer = new Top100Timer();
             timer.StartTime = DateTime.Now;
             timer.Title = title;
-            Top40Util.Debug(title);
+            Top100Util.Debug(title);
             return timer;
         }
 
         public void End()
         {
             TimeSpan duration = DateTime.Now - StartTime;
-            Top40Util.Debug(Title + ": elapsed=" + duration.TotalSeconds);
+            Top100Util.Debug(Title + ": elapsed=" + duration.TotalSeconds);
         }
     }
 }

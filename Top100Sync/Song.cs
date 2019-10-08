@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.RegularExpressions;
 
-namespace Top40Modify
+namespace Top100Modify
 {
     public class Song
     {

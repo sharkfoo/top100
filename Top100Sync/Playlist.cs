@@ -1,5 +1,5 @@
-using System;
-using Top40Modify;
+﻿using System;
+using Top100Modify;
 
 namespace iTunesExport.Parser
 {

@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace Top40Modify
+namespace Top100Modify
 {
-    public class Top40Util
+    public class Top100Util
     {
         public static void Debug(string str)
         {
-            if (Top40Settings.Debug)
+            if (Top100Settings.Debug)
             {
                 Console.WriteLine("Debug: " + str);
             }

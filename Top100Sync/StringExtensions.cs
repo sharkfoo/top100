@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Top40Modify
+namespace Top100Modify
 {
     public static class StringExtensions
     {

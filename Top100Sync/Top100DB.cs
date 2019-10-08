@@ -5,16 +5,16 @@ using iTunesExport.Parser;
 using System.Text.RegularExpressions;
 using MonoDevelop.MacInterop;
 
-namespace Top40Modify
+namespace Top100Modify
 {
-    public class Top40DB : IDisposable
+    public class Top100DB : IDisposable
     {
         private MySqlConnection dbConnection;
         private Songs dbSongsList;
 
-        public Top40DB()
+        public Top100DB()
         {
-            string connectionString = "Server=localhost;Database=top40;User ID=kevin;Password=admin;Pooling=false";
+            string connectionString = "Server=localhost;Database=Top100;User ID=kevin;Password=admin;Pooling=false";
             dbConnection = new MySqlConnection(connectionString);
             try
             {
@@ -23,7 +23,7 @@ namespace Top40Modify
             }
             catch (MySqlException)
             {
-                Top40Util.Error("Could not connect to database.");
+                Top100Util.Error("Could not connect to database.");
                 throw;
             }
 
@@ -31,7 +31,7 @@ namespace Top40Modify
             
         public void ModifyFeaturing(Func<Song, bool> compare)
         {
-            var timer = Top40Timer.Start("ModifyFeaturing");
+            var timer = Top100Timer.Start("ModifyFeaturing");
             foreach (var song in dbSongsList.List.FindAll(x => compare(x)))
             {
                 using (var updateCmd = dbConnection.CreateCommand())
@@ -42,8 +42,8 @@ namespace Top40Modify
                         string newTitle = MySqlHelper.EscapeString(song.Title + " " + getFeaturing(song.Artist));
                         string newArtist = MySqlHelper.EscapeString(getArtist(song.Artist));
                         updateCmd.CommandText = String.Format("UPDATE songs set title='{0}', artist='{1}' WHERE id={2}", newTitle, newArtist, song.DbId);
-                        Top40Util.Debug(String.Format("Db Featuring: {0}", song));
-                        if (!Top40Settings.Preview)
+                        Top100Util.Debug(String.Format("Db Featuring: {0}", song));
+                        if (!Top100Settings.Preview)
                         {
                             song.Artist = newArtist;
                             song.Title = newTitle;
@@ -57,7 +57,7 @@ namespace Top40Modify
 
         public void UpdateDbOwnership(List<Song> iTunesSongList, Func<Song, bool> compare)
         {
-            var timer = Top40Timer.Start("UpdateDbOwnership");
+            var timer = Top100Timer.Start("UpdateDbOwnership");
             foreach(Song t in dbSongsList.List.FindAll(x=> x.Own.Equals(false) && compare(x)))
             {
                 var s = iTunesSongList.Find(x => x.IsMatch(t));
@@ -69,7 +69,7 @@ namespace Top40Modify
                         updateCmd.Parameters.AddWithValue("@title", s.Title);
                         updateCmd.Parameters.AddWithValue("@artist", s.Artist);
                         updateCmd.Parameters.AddWithValue("@id", t.DbId);
-                        if (!Top40Settings.Preview)
+                        if (!Top100Settings.Preview)
                         {
                             t.Title = s.Title;
                             t.Artist = s.Artist;
@@ -77,7 +77,7 @@ namespace Top40Modify
                             updateCmd.ExecuteNonQuery();
                         }
                     }
-                    Top40Util.Debug(String.Format("Db Ownership: {0} => {1}", t, s));
+                    Top100Util.Debug(String.Format("Db Ownership: {0} => {1}", t, s));
                 }
             }
             timer.End();
@@ -85,13 +85,13 @@ namespace Top40Modify
 
         public void FindMissingOwnership(List<Song> iTunesSongList, Func<Song, bool> compare)
         {
-            var timer = Top40Timer.Start("FindMissingOwnership");
+            var timer = Top100Timer.Start("FindMissingOwnership");
             foreach(Song dbSong in dbSongsList.List.FindAll(x => x.Own.Equals(true) && compare(x)))
             {
                 var list = iTunesSongList.FindAll(x => x.IsMatch(dbSong));
                 if ((list == null) || (list.Count < 1))
                 {
-                    Top40Util.Debug(String.Format("iTunes Missing: {0}", dbSong));
+                    Top100Util.Debug(String.Format("iTunes Missing: {0}", dbSong));
                 }
             }
             timer.End();
@@ -103,7 +103,7 @@ namespace Top40Modify
             Regex comment = new Regex("(?<year>^[0-9][0-9][0-9][0-9]), #(?<number>[01][0-9][0-9]).*");
             Regex badComment = new Regex("^[0-9][0-9][0-9][0-9], #[01][0-9][0-9] [0-9][0-9][0-9][0-9], #[0-9]?[1-9].*");
 
-            var timer = Top40Timer.Start("FindMissingTagsAndComments");
+            var timer = Top100Timer.Start("FindMissingTagsAndComments");
             foreach(Song dbSong in dbSongsList.List.FindAll(x => x.Own.Equals(true) && compare(x)))
             {
                 var list = iTunesSongList.FindAll(x => x.IsMatch(dbSong));
@@ -119,20 +119,20 @@ namespace Top40Modify
                         if (!s.Grouping.Contains(top100))
                         {
                             appleScript += String.Format("    set t's grouping to \"{0}\" as text\n", addTag(s.Grouping, top100));
-                            Top40Util.Debug(String.Format("Missing Grouping: {0}=>{1}", s, addTag(s.Grouping, top100)));
+                            Top100Util.Debug(String.Format("Missing Grouping: {0}=>{1}", s, addTag(s.Grouping, top100)));
                             updateSong = true;
                         }
 
                         if (badComment.IsMatch(s.Comments))
                         {
                             appleScript += String.Format("    set t's comment to \"{0}\" as text\n", prependComment(s.Comments, dbSong.Year, dbSong.Number));
-                            Top40Util.Debug(String.Format("Bad Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
+                            Top100Util.Debug(String.Format("Bad Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
                             updateSong = true;
                         }
                         else if (!comment.IsMatch(s.Comments))
                         {
                             appleScript += String.Format("    set t's comment to \"{0}\" as text\n", prependComment(s.Comments, dbSong.Year, dbSong.Number));
-                            Top40Util.Debug(String.Format("Missing Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
+                            Top100Util.Debug(String.Format("Missing Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
                             updateSong = true;
                         }
                         else if (comment.IsMatch(s.Comments))
@@ -140,7 +140,7 @@ namespace Top40Modify
                             if (dbSong.Number < s.Number)
                             {
                                 appleScript += String.Format("    set t's comment to \"{0}\" as text\n", prependComment(s.Comments, dbSong.Year, dbSong.Number));
-                                Top40Util.Debug(String.Format("Updating Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
+                                Top100Util.Debug(String.Format("Updating Comment: {0}=>{1}", s, prependComment(s.Comments, dbSong.Year, dbSong.Number)));
                                 updateSong = true;
                             }
                         }
@@ -149,21 +149,21 @@ namespace Top40Modify
                             appleScript += "  end repeat\n" + "end tell\n";
                             try
                             {
-                                if (!Top40Settings.Preview)
+                                if (!Top100Settings.Preview)
                                 {
                                     AppleScript.Run(appleScript);
                                 }
                             }
                             catch (Exception e)
                             {
-                                Top40Util.Error(String.Format("Cannot update song: {0}\n\tException: {1}\n\tUsing: {2}", s, e, appleScript));
+                                Top100Util.Error(String.Format("Cannot update song: {0}\n\tException: {1}\n\tUsing: {2}", s, e, appleScript));
                             }
                         }
                     }
                 }
                 else
                 {
-                    Top40Util.Error("Cannot find owned song in Library. " + dbSong);
+                    Top100Util.Error("Cannot find owned song in Library. " + dbSong);
                 }
             }
             timer.End();

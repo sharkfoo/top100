@@ -178,6 +178,11 @@ namespace Top100Common
             throw new Top100Exception(ReasonType.NotFound);
         }
 
+        public async Task <IList<Song>> SearchAllAsync(CancellationToken cancelToken)
+        {
+            return await SearchAsync(null, null, null, null, null, cancelToken);
+        }
+
         public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;

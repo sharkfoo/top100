@@ -2,7 +2,7 @@
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
-namespace Top40Modify
+namespace Top100Modify
 {
     public class Songs
     {
@@ -10,7 +10,7 @@ namespace Top40Modify
 
         public Songs(MySqlConnection dbConnection)
         {
-            var timer = Top40Timer.Start("Parsing MySQL top40 db");
+            var timer = Top100Timer.Start("Parsing MySQL Top100 db");
             using (var selectCommand = dbConnection.CreateCommand())
             {
                 selectCommand.CommandText = "SELECT * FROM songs";

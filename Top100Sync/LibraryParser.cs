@@ -4,7 +4,7 @@ using System.IO;
 using System.Web;
 using System.Xml;
 using System.Xml.XPath;
-using Top40Modify;
+using Top100Modify;
 using System.Text.RegularExpressions;
 
 namespace iTunesExport.Parser
