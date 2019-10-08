@@ -8,7 +8,7 @@ services:
       - top100-data:/data/db
       - top100-config:/data/configdb
     ports:
-      - 27019:27017
+      - "27019:27017"
 
   top100import:
     image: kpearson/top100import:latest
@@ -34,7 +34,7 @@ services:
       MONGO_CONNECTION_STRING: mongodb://mongo/top100
       ASPNETCORE_ENVIRONMENT: Development
     ports:
-      - 5000:5000
+      - "5000:5000"
 
 
 volumes:
