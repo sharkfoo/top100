@@ -1,6 +1,9 @@
-﻿using System;
+﻿//
+// © Copyright 2020 Kevin Pearson
+//
+using System;
 
-namespace Top40Modify
+namespace Top100Sync
 {
     public static class StringExtensions
     {

@@ -1,10 +1,13 @@
+//
+// © Copyright 2020 Kevin Pearson
+//
 using System;
 using System.Collections;
 using System.IO;
 using System.Web;
 using System.Xml;
 using System.Xml.XPath;
-using Top40Modify;
+using Top100Sync;
 using System.Text.RegularExpressions;
 
 namespace iTunesExport.Parser

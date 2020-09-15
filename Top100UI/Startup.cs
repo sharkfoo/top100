@@ -1,5 +1,5 @@
 ﻿//
-// © Copyright 2017 Kevin Pearson
+// © Copyright 2017,2020 Kevin Pearson
 //
 
 using Microsoft.AspNetCore.Builder;
@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Top100Common;
 
-namespace Top100
+namespace Top100UI
 {
     public class Startup
     {

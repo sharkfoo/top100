@@ -1,5 +1,5 @@
 ﻿//
-// © Copyright 2017 Kevin Pearson
+// © Copyright 2017,2020 Kevin Pearson
 //
 
 using System;

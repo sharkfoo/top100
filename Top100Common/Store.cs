@@ -1,7 +1,6 @@
 ﻿//
-// © Copyright 2017 Kevin Pearson
+// © Copyright 2017,2020 Kevin Pearson
 //
-
 using System;
 using MongoDB.Driver;
 using System.Threading.Tasks;
@@ -35,7 +34,7 @@ namespace Top100Common
                     await songCollection.InsertOneAsync(document, null, cancelToken);
                     return document._id.ToString();
                 }
-                    throw new Top100Exception(ReasonType.Conflict);
+                throw new Top100Exception(ReasonType.Conflict);
             }
             catch (MongoException e)
             {

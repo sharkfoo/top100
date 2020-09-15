@@ -1,5 +1,8 @@
+//
+// © Copyright 2020 Kevin Pearson
+//
 using System;
-using Top40Modify;
+using Top100Sync;
 
 namespace iTunesExport.Parser
 {

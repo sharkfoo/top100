@@ -1,11 +1,8 @@
 //
-// © Copyright 2017 HP Development Company, L.P.
-//
-//
-// © Copyright 2017 Kevin Pearson
+// © Copyright 2017,2020 Kevin Pearson
 //
 
-namespace Top100
+namespace Top100UI
 {
     public class SongRequest
     {

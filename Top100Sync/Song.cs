@@ -1,7 +1,10 @@
-﻿using System;
+﻿//
+// © Copyright 2020 Kevin Pearson
+//
+using System;
 using System.Text.RegularExpressions;
 
-namespace Top40Modify
+namespace Top100Sync
 {
     public class Song
     {

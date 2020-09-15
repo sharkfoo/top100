@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Http.Extensions;
 using System.Net;
 using System.Threading;
 
-namespace Top100.Controllers
+namespace Top100UI.Controllers
 {
     public class Top100Controller : Controller
     {
