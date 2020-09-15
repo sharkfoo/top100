@@ -9,6 +9,6 @@
     <ProjectReference Include="..\AppleScriptSlim\AppleScriptSlim.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="MySql.Data" Version="8.0.17" />
+    <PackageReference Include="MySql.Data" Version="8.0.21" />
   </ItemGroup>
 </Project>
