@@ -23,4 +23,4 @@ COPY --from=build /Top100UI .
 
 EXPOSE ${port}/tcp
 ENV ASPNETCORE_URLS http://*:${port}
-ENTRYPOINT ["dotnet", "Top100UI.dll"]
+ENTRYPOINT ["dotnet", "Top100UI.dll", "--server.urls", "http://+:${port}"]
