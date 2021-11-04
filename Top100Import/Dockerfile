@@ -20,4 +20,5 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1-alpine
 WORKDIR /Top100Import
 COPY --from=build /Top100Import .
 
+#ENTRYPOINT ["dotnet", "Top100Import.dll", "2020.csv"]
 ENTRYPOINT ["dotnet", "Top100Import.dll", "top100.csv"]
