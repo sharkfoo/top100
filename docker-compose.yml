@@ -7,6 +7,8 @@ services:
     volumes:
       - top100-data:/data/db
       - top100-config:/data/configdb
+    networks:
+      - top100
     ports:
       - "27019:27017"
 
@@ -17,6 +19,8 @@ services:
       dockerfile: Top100Import/Dockerfile
     depends_on:
       - mongo
+    networks:
+      - top100
     environment:
       MONGO_CONNECTION_STRING: mongodb://mongo/top100
       ASPNETCORE_ENVIRONMENT: Development
@@ -33,9 +37,13 @@ services:
     environment:
       MONGO_CONNECTION_STRING: mongodb://mongo/top100
       ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - top100
     ports:
-      - "5000:5000"
+      - "5050:5000"
 
+networks:
+  top100:
 
 volumes:
   top100-data:
