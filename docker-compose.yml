@@ -12,6 +12,19 @@ services:
     ports:
       - "27019:27017"
 
+  top100sync:
+    image: kpearson/top100sync:latest
+    build:
+      context: .
+      dockerfile: Top100Sync/Dockerfile
+    depends_on:
+      - mongo
+    networks:
+      - top100
+    environment:
+      MONGO_CONNECTION_STRING: mongodb://mongo/top100
+      ASPNETCORE_ENVIRONMENT: Development
+
   top100import:
     image: kpearson/top100import:latest
     build:

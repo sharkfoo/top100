@@ -24,6 +24,7 @@ namespace Top100Common
             var client = new MongoClient(connectionString);
             db = client.GetDatabase("top100");
         }
+
         public async Task<string> CreateAsync(Song song, CancellationToken cancelToken)
         {
             try
@@ -74,7 +75,7 @@ namespace Top100Common
             }
         }
 
-        public async Task<Song> ReadAsync(int year, int number, CancellationToken cancelToken)
+        public async Task<Song> GetAsync(int year, int number, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -106,6 +107,7 @@ namespace Top100Common
                 throw new Top100Exception(ReasonType.Unknown);
             }
         }
+
         public async Task<Song> DeleteAsync(int year, int number, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
@@ -177,7 +179,7 @@ namespace Top100Common
             throw new Top100Exception(ReasonType.NotFound);
         }
 
-        public async Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken)
+        public async Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken)
         {
             var builder = Builders<SongDocument>.Filter;
             var filter = builder.Empty;
@@ -225,6 +227,25 @@ namespace Top100Common
             catch (MongoException ex)
             {
                 Console.WriteLine($"FindAsync ex={ex}");
+            }
+
+            return retList;
+        }
+
+        public async Task<IList<Song>> FindAllAsync(CancellationToken cancelToken)
+        {
+            var retList = new List<Song>();
+            var builder = Builders<SongDocument>.Filter;
+            var filter = builder.Empty;
+
+            try
+            {
+                await songCollection.Find(filter).SortBy(x => x.Song.Year).ThenBy(x => x.Song.Number).ForEachAsync(x => retList.Add(x.Song), cancelToken);
+                Console.WriteLine($"FindAsync found count={retList.Count} documents");
+            }
+            catch (MongoException ex)
+            {
+                Console.WriteLine($"FindAllAsync ex={ex}");
             }
 
             return retList;

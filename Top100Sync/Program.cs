@@ -3,6 +3,8 @@
 //
 using System;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using Top100Common;
 using iTunesExport.Parser;
 
 namespace Top100Sync
@@ -33,13 +35,23 @@ namespace Top100Sync
             Int16 year = 0;
             Func<Song, bool> compare;
 
+            var builder = new ConfigurationBuilder().AddEnvironmentVariables();
+            var config = builder.Build();
+            var mongoConnectionString = config["MONGO_CONNECTION_STRING"];
+
+            var client = new Store(mongoConnectionString);
+
             paramList.Add("debug", a => Top100Settings.Debug = Boolean.Parse(a));
             paramList.Add("preview", a => Top100Settings.Preview = Boolean.Parse(a));
             paramList.Add("year", a => year = Int16.Parse(a));
             paramList.Add("fix_featuring", a => fix_featuring = Boolean.Parse(a));
+            paramList.Add("connection_string", a => mongoConnectionString = a);
 
             ParseArguments(args);
 
+            Top100Settings.Debug = true;
+            Top100Settings.Preview = true;
+            
             var timer = Top100Timer.Start("Parsing iTunes library");
             List<Song> iTunesSongList = new List<Song>();
             LibraryParser library = new LibraryParser(LibraryParser.GetDefaultLibraryLocation());
@@ -71,7 +83,7 @@ namespace Top100Sync
                 compare = (x) => true;
             }
 
-            using (var db = new Top100DB())
+            using (var db = new Top40DBMongo())
             {
                 if (fix_featuring)
                 {

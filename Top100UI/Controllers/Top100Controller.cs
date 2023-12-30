@@ -67,7 +67,7 @@ namespace Top100UI.Controllers
         {
             try
             {
-                var ret = await client.ReadAsync(year, number, cancelToken);
+                var ret = await client.GetAsync(year, number, cancelToken);
                 return Ok(ret);
             }
             catch (Top100Exception e)
@@ -146,7 +146,7 @@ namespace Top100UI.Controllers
             var numberFilter = Request.Query["number"];
             var ownFilter = Request.Query["own"];
 
-            var retList = await client.SearchAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter, cancelToken);
+            var retList = await client.FindAsync(titleFilter, artistFilter, yearFilter, numberFilter, ownFilter, cancelToken);
             if (retList != null)
             {
                 return Ok(retList);

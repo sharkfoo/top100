@@ -2,7 +2,6 @@
 // © Copyright 2020 Kevin Pearson
 //
 using System;
-using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using MonoDevelop.MacInterop;
@@ -11,24 +10,10 @@ namespace Top100Sync
 {
     public class Top40DBMongo : IDisposable
     {
-        private MySqlConnection dbConnection;
         private Songs dbSongsList;
 
         public Top40DBMongo()
         {
-            string connectionString = "Server=localhost;Database=top40;User ID=kevin;Password=admin;Pooling=false";
-            dbConnection = new MySqlConnection(connectionString);
-            try
-            {
-                dbConnection.Open();
-                dbSongsList = new Songs(dbConnection);
-            }
-            catch (MySqlException)
-            {
-                Top100Util.Error("Could not connect to database.");
-                throw;
-            }
-
         }
             
         public void ModifyFeaturing(Func<Song, bool> compare)
@@ -36,6 +21,7 @@ namespace Top100Sync
             var timer = Top100Timer.Start("ModifyFeaturing");
             foreach (var song in dbSongsList.List.FindAll(x => compare(x)))
             {
+                /*
                 using (var updateCmd = dbConnection.CreateCommand())
                 {
                     if (song.Artist.Contains("Featuring", StringComparison.OrdinalIgnoreCase) ||
@@ -53,6 +39,7 @@ namespace Top100Sync
                         }
                     }
                 }
+                */
             }
             timer.End();
         }
@@ -65,6 +52,7 @@ namespace Top100Sync
                 var s = iTunesSongList.Find(x => x.IsMatch(t));
                 if (s != null)
                 {
+                    /*
                     using (var updateCmd = dbConnection.CreateCommand())
                     {
                         updateCmd.CommandText = "UPDATE songs set title=@title, artist=@artist, own='1' WHERE id=@id";
@@ -79,6 +67,7 @@ namespace Top100Sync
                             updateCmd.ExecuteNonQuery();
                         }
                     }
+                    */
                     Top100Util.Debug(String.Format("Db Ownership: {0} => {1}", t, s));
                 }
             }
@@ -291,11 +280,6 @@ namespace Top100Sync
             
         public void Dispose()
         {
-            if (dbConnection != null)
-            {
-                dbConnection.Dispose();
-                dbConnection = null;
-            }
         }
     }
 }

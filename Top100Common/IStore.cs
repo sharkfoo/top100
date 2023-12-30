@@ -12,9 +12,10 @@ namespace Top100Common
     {
         Task<string> CreateAsync(Song song, CancellationToken cancelToken);
         Task<string> CreateOrUpdateAsync(Song song, CancellationToken cancelToken);
-        Task<Song> ReadAsync(int year, int number, CancellationToken cancelToken);
+        Task<Song> GetAsync(int year, int number, CancellationToken cancelToken);
         Task<Song> DeleteAsync(int year, int number, CancellationToken cancelToken);
         Task<string> UpdateAsync(Song song, CancellationToken cancelToken);
-        Task<IList<Song>> SearchAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken);
+        Task<IList<Song>> FindAsync(string titleFilterString, string artistFilterString, string yearFilterString, string numberFilterString, string ownFilterString, CancellationToken cancelToken);
+        Task<IList<Song>> FindAllAsync(CancellationToken cancelToken);
     }
 }

@@ -2,7 +2,6 @@
 // © Copyright 2020 Kevin Pearson
 //
 using System;
-using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
 namespace Top100Sync
@@ -11,9 +10,10 @@ namespace Top100Sync
     {
         private List<Song> songList = new List<Song>();
 
-        public Songs(MySqlConnection dbConnection)
+        public Songs()
         {
             var timer = Top100Timer.Start("Parsing MySQL top40 db");
+            /*
             using (var selectCommand = dbConnection.CreateCommand())
             {
                 selectCommand.CommandText = "SELECT * FROM songs";
@@ -32,6 +32,7 @@ namespace Top100Sync
                     }
                 }
             }
+            */
             timer.End();
         }
 
