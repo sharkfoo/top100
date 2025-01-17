@@ -13,12 +13,18 @@ namespace Top100Import
     {
         public static async Task Main(string[] args)
         {
+            var input_file = "";
+
             if (args.Length != 1)
             {
-                Console.WriteLine("");
-                Console.WriteLine($"\tUsage: {args[0]} <csv file>");
-                Console.WriteLine("");
-                return;
+                input_file = "top100.csv";
+                //Console.WriteLine("");
+                //Console.WriteLine($"\tUsage: {args[0]} <csv file>");
+                //Console.WriteLine("");
+            }
+            else
+            {
+                input_file = args[0];
             }
             var builder = new ConfigurationBuilder().AddEnvironmentVariables();
             var config = builder.Build();

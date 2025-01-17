@@ -53,7 +53,7 @@ services:
     networks:
       - top100
     ports:
-      - "5050:5000"
+      - "5000:5000"
 
 networks:
   top100:
