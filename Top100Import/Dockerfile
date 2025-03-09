@@ -1,5 +1,5 @@
-﻿FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
-LABEL cache kpearson/top100import-build
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+LABEL cache=sharkfoo/top100import-build
 
 #Restore
 WORKDIR /Top100Common
@@ -16,7 +16,7 @@ RUN ["dotnet", "build", "-c", "Release"]
 RUN ["dotnet", "publish", "-c", "Release", "-o", "/Top100Import"]
 
 #Run
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
 WORKDIR /Top100Import
 COPY --from=build /Top100Import .
 

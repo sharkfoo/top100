@@ -1,5 +1,5 @@
-﻿FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
-LABEL cache kpearson/top100sync-build
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+LABEL cache=sharkfoo/top100sync-build
 
 #Restore
 WORKDIR /AppleScriptSlim
@@ -20,7 +20,7 @@ RUN ["dotnet", "build", "-c", "Release"]
 RUN ["dotnet", "publish", "-c", "Release", "-o", "/Top100Sync"]
 
 #Run
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
 WORKDIR /Top100Sync
 COPY --from=build /Top100Sync .
 

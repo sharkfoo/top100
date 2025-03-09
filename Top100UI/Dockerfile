@@ -1,5 +1,5 @@
-﻿FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
-LABEL cache kpearson/top100ui-build
+﻿FROM mcr.microsoft.com/dotnet/sdk:8.0-alpine AS build
+LABEL cache=sharkfoo/top100ui-build
 
 #Restore
 WORKDIR /Top100Common
@@ -16,11 +16,11 @@ RUN ["dotnet", "build", "-c", "Release"]
 RUN ["dotnet", "publish", "-c", "Release", "-o", "/Top100UI"]
 
 #Run
-FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
+FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
 ARG port
 WORKDIR /Top100UI
 COPY --from=build /Top100UI .
 
 EXPOSE ${port}
-ENV ASPNETCORE_URLS http://*:${port}
+ENV ASPNETCORE_URLS=http://*:${port}
 ENTRYPOINT ["dotnet", "Top100UI.dll", "--server.urls", "http://+:${port}"]

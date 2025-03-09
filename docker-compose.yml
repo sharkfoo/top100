@@ -13,7 +13,7 @@ services:
       - 27019:27017
 
   top100sync:
-    image: kpearson/top100sync:latest
+    image: sharkfoo/top100sync:latest
     build:
       context: .
       dockerfile: Top100Sync/Dockerfile
@@ -26,7 +26,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
 
   top100import:
-    image: kpearson/top100import:latest
+    image: sharkfoo/top100import:latest
     build:
       context: .
       dockerfile: Top100Import/Dockerfile
@@ -39,7 +39,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
 
   top100ui:
-    image: kpearson/top100ui:latest
+    image: sharkfoo/top100ui:latest
     build:
       context: .
       dockerfile: Top100UI/Dockerfile
