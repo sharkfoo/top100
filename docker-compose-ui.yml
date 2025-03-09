@@ -1,0 +1,37 @@
+version: "3.3"
+
+services:
+
+  mongo:
+    image: mongo:latest
+    volumes:
+      - top100-data:/data/db
+      - top100-config:/data/configdb
+    networks:
+      - top100
+    ports:
+      - 27019:27017
+
+  top100ui:
+    image: sharkfoo/top100ui:latest
+    build:
+      context: .
+      dockerfile: Top100UI/Dockerfile
+      args:
+        - port=5000
+    depends_on:
+      - mongo
+    environment:
+      MONGO_CONNECTION_STRING: mongodb://mongo/top100
+      ASPNETCORE_ENVIRONMENT: Development
+    networks:
+      - top100
+    ports:
+      - 5000:5000
+
+networks:
+  top100:
+
+volumes:
+  top100-data:
+  top100-config:
