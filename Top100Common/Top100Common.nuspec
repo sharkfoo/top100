@@ -9,7 +9,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>Initial release.</releaseNotes>
-    <copyright>Copyright 2021</copyright>
+    <copyright>Copyright 2021-2025</copyright>
     <tags>music top100 billboard</tags>
   </metadata>
 </package>

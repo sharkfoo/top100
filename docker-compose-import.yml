@@ -14,11 +14,11 @@ services:
 
   top100import:
     image: sharkfoo/top100import:latest
-    build:
-      context: .
-      dockerfile: Top100Import/Dockerfile
     depends_on:
       - mongo
+    deploy:
+      restart_policy:
+        condition: none
     networks:
       - top100
     environment:
